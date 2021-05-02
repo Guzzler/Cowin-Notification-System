@@ -29,3 +29,7 @@
 .overflow-auto {
   overflow: auto !important;
 }
+
+.border-round {
+  border-radius: 8px! important;
+}

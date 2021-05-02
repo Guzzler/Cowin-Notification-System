@@ -5,7 +5,6 @@ import {
   Switch
 } from 'react-router-dom'
 
-import Subscription from './subscription/index'
 import PageNotFound from './common/error-pages/PageNotFound'
 import Landing from './Landing'
 
@@ -14,9 +13,8 @@ function MainRouter () {
   return (
     <Route
       render={({ location }) => (
-        <Row className='overflow-auto display-block'>
+        <Row className='overflow-auto display-block' style={{height: '100vh'}}>
           <Switch location={location}>
-            <Route path="/subscribe" component={Subscription} key="subscribe" />
             <Route path="/" component={Landing} key="landing" />
             <Route render={() => <PageNotFound />} key="notFound" />
           </Switch>

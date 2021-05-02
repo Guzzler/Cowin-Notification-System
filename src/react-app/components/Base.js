@@ -7,7 +7,7 @@ const { Content } = Layout
 
 function Base () {
   return (
-    <Layout className='height-min-100'>
+    <Layout className='height-min-100 background-white'>
       <Content theme='light' className='height-min-100'>
         <MainRouter />
       </Content>

@@ -1,34 +1,66 @@
 import React from 'react'
-import { Row, Col, Button } from 'antd'
-import { TableOutlined } from '@ant-design/icons'
+import {  Row, Col } from 'antd'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Loader from './common/Loader'
 
-import cowinLogo from '../../assets/images/cowin-notification-system-logo.png'
+import { PicLeftOutlined, MailOutlined, ExceptionOutlined } from '@ant-design/icons'; 
+import RegistrationStep from './landing/RegistrationStep';
+import RegistrationForm from './landing/RegistrationForm';
 
-class BaseContent extends React.Component {
+const landingPageSteps = [
+  {
+    color: 'peach',
+    number: 1,
+    description: 'Enter your email and phone details along with a list of each district you would like to get updates for',
+    Icon: PicLeftOutlined
+  },
+  {
+    color: 'green',
+    number: 2,
+    description: 'Check and verify your email to activate your subscription',
+    Icon: MailOutlined
+  },
+  {
+    color: 'blue',
+    number: 3,
+    description: 'Receive notifications as soon as vaccine slots are updated!',
+    Icon: ExceptionOutlined
+  }
+]
+
+
+
+class Landing extends React.Component {
+
   render() {
+  
     return (
-      <Row className='padding--sides width-100 height-100 background-white'>
-        <Col span={24} className='center' >
-          <img src={cowinLogo} alt='cowin-notification-system-logo' height={200} />
-          <Loader />
-          <div>
-            <Link to='/subscribe'>
-              <Button type="primary" className='margin-half--ends margin--sides background-green on-hover-light' style={{border: 0 }} shape="round" icon={<TableOutlined />}>
-                Subscribe here!
-              </Button>
-            </Link>
-          </div>
+      <Row className='padding--sides width-100 height-100'>
+        <Col md={14} sm={24}>
+          <div className='text-black margin-double--left margin-double--top f36'>Cowin Notification System</div>
+          <div className='text-grey margin-double--left margin-double--bottom f18'> Making India great one vaccine at a time!</div>
+          <div className='text-black margin-double--left f18'>How it works?</div>
+          <Row>
+          {
+            landingPageSteps.map((step) => {
+              return (
+                <RegistrationStep
+                  {...step}
+                />
+              )
+            })
+          }
+          </Row>
+        </Col>
+        <Col md={10} sm={24}>
+          <RegistrationForm />
         </Col>
       </Row>
     )
   }
 }
 
-BaseContent.propTypes = {
+Landing.propTypes = {
   base: PropTypes.object.isRequired,
 }
 
@@ -40,4 +72,4 @@ const mapStateToProps = ({ base }) => {
 
 export default connect(
   mapStateToProps, {
-})(BaseContent)
+})(Landing)
