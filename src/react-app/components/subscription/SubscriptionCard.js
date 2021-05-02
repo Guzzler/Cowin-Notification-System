@@ -1,9 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-
-import { findWeaknessScoringforParticularPosition, calculateHeatmapScoring, findSquarestoHighlightforHeatmap } from "../../common/utils/NewGameUtils";
-
 
 class SubscriptionCard extends React.Component {
 
@@ -14,7 +10,6 @@ class SubscriptionCard extends React.Component {
       district,
       vaccineType,
       vaccineAgeGroup,
-
     } = this.props.subscription;
 
     return (

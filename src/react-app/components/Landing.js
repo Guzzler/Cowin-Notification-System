@@ -1,12 +1,12 @@
 import React from 'react'
 import { Row, Col, Button } from 'antd'
-import { TableOutlined, AppstoreAddOutlined } from '@ant-design/icons'
+import { TableOutlined } from '@ant-design/icons'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Loader from './common/Loader'
 
-import cowinLogo from '../../../assets/images/cowin-notification-system-logo.png'
+import cowinLogo from '../../assets/images/cowin-notification-system-logo.png'
 
 class BaseContent extends React.Component {
   render() {

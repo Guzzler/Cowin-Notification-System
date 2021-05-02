@@ -1,5 +1,3 @@
-import * as ActionTypes from '../actions' 
-
 const initialState = {
   base: {
     subscription: {

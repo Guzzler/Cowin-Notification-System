@@ -26,10 +26,10 @@ const mapStateToProps = ({ base }) => {
   }
 }
 
-NewGame.propTypes = {
-  Subscription: PropTypes.object.isRequired,
+Subscription.propTypes = {
+  subscription: PropTypes.object.isRequired,
 }
 
 export default connect(
-  mapStateToProps, {})(NewGame)
+  mapStateToProps, {})(Subscription)
 
