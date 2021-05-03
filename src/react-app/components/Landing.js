@@ -2,6 +2,15 @@ import React from 'react'
 import {  Row, Col } from 'antd'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import {
+  onChangeRegistrationField,
+  onChangeSubscriptionField,
+  onAddSubscription,
+  onRemoveSubscription,
+  getAllStates,
+  fetchDistricts,
+  registerSubscription,
+} from '../actions/index'
 
 import { PicLeftOutlined, MailOutlined, ExceptionOutlined } from '@ant-design/icons'; 
 import RegistrationStep from './landing/RegistrationStep';
@@ -32,6 +41,9 @@ const landingPageSteps = [
 
 class Landing extends React.Component {
 
+  componentDidMount() {
+    this.props.getAllStates()
+  }
   render() {
   
     return (
@@ -42,9 +54,10 @@ class Landing extends React.Component {
           <div className='text-black margin-double--left f18'>How it works?</div>
           <Row>
           {
-            landingPageSteps.map((step) => {
+            landingPageSteps.map((step, index) => {
               return (
                 <RegistrationStep
+                  key={index} 
                   {...step}
                 />
               )
@@ -53,7 +66,14 @@ class Landing extends React.Component {
           </Row>
         </Col>
         <Col md={10} sm={24}>
-          <RegistrationForm />
+          <RegistrationForm 
+            onChangeRegistrationField={(changedField) => this.props.onChangeRegistrationField(changedField)}
+            onChangeSubscriptionField={(changedField, index) => this.props.onChangeSubscriptionField(changedField, index)}
+            onAddSubscription={() => this.props.onAddSubscription()}
+            onRemoveSubscription={(index) => this.props.onRemoveSubscription()}
+            fetchDistricts={(stateId) => this.props.fetchDistricts(stateId)}
+            registration={this.props.base.registration}
+          />
         </Col>
       </Row>
     )
@@ -72,4 +92,11 @@ const mapStateToProps = ({ base }) => {
 
 export default connect(
   mapStateToProps, {
+    onChangeSubscriptionField,
+    onChangeRegistrationField,
+    onAddSubscription,
+    onRemoveSubscription,
+    getAllStates,
+    fetchDistricts,
+    registerSubscription,
 })(Landing)
