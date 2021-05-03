@@ -1,9 +1,9 @@
 .text-green {
-  color: #A6CFAA !important;
+  color: #64c56d !important;
 }
 
 .text-peach {
-  color: #CFA6A6 !important;
+  color: #cf6666 !important;
 }
 
 .text-white {
@@ -23,10 +23,14 @@
 }
 
 .text-blue {
-  color: #A6AFCF !important;
+  color: #7084ce !important;
 }
 
 .text-light-grey {
   color: #C8CFD5 !important;
+}
+
+.text-red {
+  color: '#8B0000' !important;
 }
 

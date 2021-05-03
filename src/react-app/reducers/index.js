@@ -5,13 +5,13 @@ const defaultSubscription = {
   districtId: '',
   stateId: '',
   vaccine: 'both',
-  age_group: 'both'
+  age_group: 'both',
+  districts: [],
 }
 
 const initialState = {
   base: {
     registration: {
-      districts: [],
       states: [],
       phoneNumber: '',
       email: '',
@@ -100,13 +100,19 @@ const mainReducer = (state = initialState, action) => {
           ...state.base,
           registration: {
             ...state.base.registration,
-            states: action.response,
+            states: action.response.data,
           }
         }
       } 
     }
 
     case ActionTypes.FETCH_DISTRICTS_SUCCESS: {
+
+      const subscriptions = _.cloneDeep(state.base.registration.subscriptions)
+      subscriptions[action.index] = {
+        ...subscriptions[action.index],
+        districts: action.response.data 
+      }
 
 
       return {
@@ -115,20 +121,21 @@ const mainReducer = (state = initialState, action) => {
           ...state.base,
           registration: {
             ...state.base.registration,
-            districts: action.response,
+            subscriptions,
           }
         }
       } 
     }
 
-
-    case ActionTypes.ON_CHANGE_SUBSCRIPTION_FIELD: {
+    case ActionTypes.FETCH_DISTRICTS_REQUEST: {
 
       const subscriptions = _.cloneDeep(state.base.registration.subscriptions)
       subscriptions[action.index] = {
         ...subscriptions[action.index],
-        ...action.changedField
+        districts: [],
+        districtId: '',
       }
+
 
       return {
         ...state,

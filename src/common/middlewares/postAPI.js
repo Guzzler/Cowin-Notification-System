@@ -1,5 +1,5 @@
 
-import { camelCaseKeys, getCookie, snakeCaseKeys } from '../utils'
+import { camelCaseKeys, snakeCaseKeys } from '../utils'
 
 function handle400AndAbove (response, reject) {
   const { status, body } = response

@@ -15,6 +15,7 @@ import {
 import { PicLeftOutlined, MailOutlined, ExceptionOutlined } from '@ant-design/icons'; 
 import RegistrationStep from './landing/RegistrationStep';
 import RegistrationForm from './landing/RegistrationForm';
+import { isSmallDevice } from '../../common/utils'
 
 const landingPageSteps = [
   {
@@ -37,22 +38,45 @@ const landingPageSteps = [
   }
 ]
 
-
-
 class Landing extends React.Component {
 
   componentDidMount() {
     this.props.getAllStates()
   }
   render() {
-  
+    const isSmall = isSmallDevice();
     return (
-      <Row className='padding--sides width-100 height-100'>
-        <Col md={14} sm={24}>
-          <div className='text-black margin-double--left margin-double--top f36'>Cowin Notification System</div>
-          <div className='text-grey margin-double--left margin-double--bottom f18'> Making India great one vaccine at a time!</div>
-          <div className='text-black margin-double--left f18'>How it works?</div>
-          <Row>
+      <Row className={`${isSmall ? '' : 'margin-double--left'} padding--sides width-100 height-100`}>
+        <Col md={10} sm={24} push={isSmall ? 0 : 14}>
+          { 
+            isSmall ?
+            <div>
+              <div className={'text-black margin-double--top f24 center'}>Cowin Notification System</div>
+              <div className={'text-grey f16 center'}> Making India great one vaccine at a time!</div>
+            </div> :
+            null
+          }
+          <RegistrationForm 
+            onChangeRegistrationField={(changedField) => this.props.onChangeRegistrationField(changedField)}
+            onChangeSubscriptionField={(changedField, index) => this.props.onChangeSubscriptionField(changedField, index)}
+            onAddSubscription={() => this.props.onAddSubscription()}
+            onRemoveSubscription={(index) => this.props.onRemoveSubscription(index)}
+            fetchDistricts={(stateId, index) => this.props.fetchDistricts(stateId, index)}
+            registration={this.props.base.registration}
+            registerSubscription={() => this.props.registerSubscription(this.props.base.registration)}
+          />
+        </Col>
+        <Col md={14} sm={24} pull={isSmall ? 0 : 10}>
+        { 
+            !isSmall ?
+            <div>
+              <div className={'text-black margin-double--top f36'}>Cowin Notification System</div>
+              <div className={'text-grey  margin-double--bottom f18'}> Making India great one vaccine at a time!</div>
+            </div> :
+            null
+          }
+          <div className='text-black f18'>How it works?</div>
+          <Row className='margin--bottom'>
           {
             landingPageSteps.map((step, index) => {
               return (
@@ -64,16 +88,6 @@ class Landing extends React.Component {
             })
           }
           </Row>
-        </Col>
-        <Col md={10} sm={24}>
-          <RegistrationForm 
-            onChangeRegistrationField={(changedField) => this.props.onChangeRegistrationField(changedField)}
-            onChangeSubscriptionField={(changedField, index) => this.props.onChangeSubscriptionField(changedField, index)}
-            onAddSubscription={() => this.props.onAddSubscription()}
-            onRemoveSubscription={(index) => this.props.onRemoveSubscription()}
-            fetchDistricts={(stateId) => this.props.fetchDistricts(stateId)}
-            registration={this.props.base.registration}
-          />
         </Col>
       </Row>
     )

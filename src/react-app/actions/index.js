@@ -55,10 +55,16 @@ export const getAllStates = () => ({
 export const FETCH_DISTRICTS_REQUEST = 'FETCH_DISTRICTS_REQUEST'
 export const FETCH_DISTRICTS_SUCCESS = 'FETCH_DISTRICTS_SUCCESS'
 export const FETCH_DISTRICTS_FAILURE = 'FETCH_DISTRICTS_FAILURE'
-export const fetchDistricts = (stateId) => ({
+export const fetchDistricts = (stateId, index) => ({
   [GET_API]: {
     types: [FETCH_DISTRICTS_REQUEST, FETCH_DISTRICTS_SUCCESS, FETCH_DISTRICTS_FAILURE],
-    endpoint: `https://a7nn6pz85i.execute-api.ap-south-1.amazonaws.com/dev/districts?state_id=${stateId}`
+    endpoint: `https://a7nn6pz85i.execute-api.ap-south-1.amazonaws.com/dev/districts?state_id=${stateId}`,
+    successTypeActionProps: {
+      index,
+    },
+    requestTypeActionProps: {
+      index,
+    }
   }
 })
 
@@ -66,14 +72,14 @@ export const fetchDistricts = (stateId) => ({
 export const REGISTER_SUBSCRIBE_REQUEST = 'REGISTER_SUBSCRIBE_REQUEST'
 export const REGISTER_SUBSCRIBE_SUCCESS = 'REGISTER_SUBSCRIBE_SUCCESS'
 export const REGISTER_SUBSCRIBE_FAILURE = 'REGISTER_SUBSCRIBE_FAILURE'
-export const registerSubscription = (stateId) => ({
+export const registerSubscription = (registration) => ({
   [POST_API]: {
     types: [REGISTER_SUBSCRIBE_REQUEST, REGISTER_SUBSCRIBE_SUCCESS, REGISTER_SUBSCRIBE_FAILURE],
     endpoint: `https://a7nn6pz85i.execute-api.ap-south-1.amazonaws.com/dev/subscribe`,
     payload: {
-        "email":"abizerl123@gmail.com", 
-        "phone_number": "123", 
-        "subscriptions": [{"vaccine":"abc","age_group": "abc","district_id":"1232"}]
+        "email": registration.email, 
+        "phoneNumber": registration.phoneNumber, 
+        "subscriptions": registration.subscriptions
     },
     skipCsrfToken: true,
     isPayloadJson: true,
