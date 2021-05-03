@@ -13,31 +13,9 @@ import {
   resetRegisterForm,
 } from '../actions/index'
 
-import { PicLeftOutlined, MailOutlined, ExceptionOutlined } from '@ant-design/icons'; 
 import RegistrationStep from './landing/RegistrationStep';
 import RegistrationForm from './landing/RegistrationForm';
-import { isSmallDevice } from '../../common/utils'
-
-const landingPageSteps = [
-  {
-    color: 'peach',
-    number: 1,
-    description: 'Enter your email and phone details along with a list of each district you would like to get updates for',
-    Icon: PicLeftOutlined
-  },
-  {
-    color: 'green',
-    number: 2,
-    description: 'Check and verify your email to activate your subscription',
-    Icon: MailOutlined
-  },
-  {
-    color: 'blue',
-    number: 3,
-    description: 'Receive notifications as soon as vaccine slots are updated!',
-    Icon: ExceptionOutlined
-  }
-]
+import { isSmallDevice, landingPageSteps } from '../../common/utils'
 
 class Landing extends React.Component {
 

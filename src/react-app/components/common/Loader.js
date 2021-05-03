@@ -1,15 +1,12 @@
 import React from 'react'
-import { Row, Col } from 'antd'
-import Particles from 'react-particles-js';
+import { Spin, Space } from 'antd';
 
 
 const Loader = () => {
   return (
-    <Row style={{ width: '100%' }}>
-      <Col span={12} offset={6}>
-      <Particles />
-      </Col>
-    </Row>
+    <Space size="middle">
+      <Spin size="large" />
+    </Space>
   )
 }
 
