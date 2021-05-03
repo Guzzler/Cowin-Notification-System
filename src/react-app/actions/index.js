@@ -101,7 +101,7 @@ export const UNSUBSCRIBE_EMAIL_FAILURE = 'UNSUBSCRIBE_EMAIL_FAILURE'
 export const unsubscribeEmail = (email, subscriptionId) => ({
   [POST_API]: {
     types: [UNSUBSCRIBE_EMAIL_REQUEST, UNSUBSCRIBE_EMAIL_SUCCESS, UNSUBSCRIBE_EMAIL_FAILURE],
-    endpoint: `${BASE_ENDPOINT}/dev/unsubscribe`,
+    endpoint: `${BASE_ENDPOINT}/dev/unsubscribe?email=${email}&subscription_id=${subscriptionId}`,
     payload: {
         "email": email, 
         'subscription_id': subscriptionId
