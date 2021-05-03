@@ -4,7 +4,7 @@ import { Spin, Space } from 'antd';
 
 const Loader = () => {
   return (
-    <Space size="middle">
+    <Space size="middle" className='center'>
       <Spin size="large" />
     </Space>
   )

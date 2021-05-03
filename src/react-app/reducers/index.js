@@ -14,6 +14,7 @@ const initialState = {
     registration: {
       hasRegistered: false,
       regFailure: false,
+      isLoading: false,
       states: [],
       phoneNumber: '',
       email: '',
@@ -165,6 +166,21 @@ const mainReducer = (state = initialState, action) => {
           registration: {
             ...state.base.registration,
             hasRegistered: true,
+            isLoading: false,
+          }
+        }
+      } 
+    }
+
+    case ActionTypes.REGISTER_SUBSCRIBE_REQUEST: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          registration: {
+            ...state.base.registration,
+            isLoading: true,
           }
         }
       } 
@@ -180,6 +196,7 @@ const mainReducer = (state = initialState, action) => {
             ...state.base.registration,
             hasRegistered: false,
             regFailure: true,
+            isLoading: false,
           }
         }
       } 

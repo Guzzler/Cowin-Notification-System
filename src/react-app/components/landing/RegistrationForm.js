@@ -5,6 +5,7 @@ import SubscriptionCard from './registration/SubscriptionCard';
 import { isSmallDevice } from '../../../common/utils';
 import SuccessfulRegistration from './registration/SuccessfulRegistration';
 import FailedRegistration from './registration/FailedRegistration';
+import Loader from '../common/Loader';
 
 
 const RegistrationForm = (props) => {
@@ -27,6 +28,7 @@ const RegistrationForm = (props) => {
     states,
     hasRegistered,
     regFailure,
+    isLoading,
   } = registration;
 
   const isSmall = isSmallDevice();
@@ -34,6 +36,8 @@ const RegistrationForm = (props) => {
     <Row className='padding-double--ends'>
 			<Col className={`background-grey ${isSmall ? '' : 'margin-double--top'} border-round padding--sides padding--ends`} md={22} lg={18} sm={24} >
         { 
+          isLoading ?
+          <Loader /> :
           hasRegistered ?
           <SuccessfulRegistration
             resetRegisterForm={() => resetRegisterForm()}
