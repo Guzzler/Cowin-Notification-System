@@ -5,13 +5,14 @@ const defaultSubscription = {
   districtId: '',
   stateId: '',
   vaccine: 'both',
-  age_group: 'both',
+  ageGroup: 'both',
   districts: [],
 }
 
 const initialState = {
   base: {
     registration: {
+      hasRegistered: false,
       states: [],
       phoneNumber: '',
       email: '',
@@ -148,6 +149,25 @@ const mainReducer = (state = initialState, action) => {
         }
       } 
     }
+
+    case ActionTypes.REGISTER_SUBSCRIBE_SUCCESS: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          registration: {
+            ...state.base.registration,
+            hasRegistered: true,
+          }
+        }
+      } 
+    }
+
+    case ActionTypes.RESET_REGISTER_FORM_STATE: {
+      return initialState;
+    }
+
     default: {
       return state
     }

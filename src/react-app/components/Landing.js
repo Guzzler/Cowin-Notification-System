@@ -10,6 +10,7 @@ import {
   getAllStates,
   fetchDistricts,
   registerSubscription,
+  resetRegisterForm,
 } from '../actions/index'
 
 import { PicLeftOutlined, MailOutlined, ExceptionOutlined } from '@ant-design/icons'; 
@@ -64,6 +65,7 @@ class Landing extends React.Component {
             fetchDistricts={(stateId, index) => this.props.fetchDistricts(stateId, index)}
             registration={this.props.base.registration}
             registerSubscription={() => this.props.registerSubscription(this.props.base.registration)}
+            resetRegisterForm={() => this.props.resetRegisterForm()}
           />
         </Col>
         <Col md={14} sm={24} pull={isSmall ? 0 : 10}>
@@ -113,4 +115,5 @@ export default connect(
     getAllStates,
     fetchDistricts,
     registerSubscription,
+    resetRegisterForm,
 })(Landing)

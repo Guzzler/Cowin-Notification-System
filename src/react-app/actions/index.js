@@ -79,9 +79,25 @@ export const registerSubscription = (registration) => ({
     payload: {
         "email": registration.email, 
         "phoneNumber": registration.phoneNumber, 
-        "subscriptions": registration.subscriptions
+        "subscriptions": registration.subscriptions.map((subscription) =>{
+          return {
+            'district_id': subscription.districtId,
+            'state_id': subscription.stateId,
+            'vaccine': subscription.vaccine,
+            'age_group': subscription.ageGroup
+          }
+        })
     },
     skipCsrfToken: true,
     isPayloadJson: true,
   }
 })
+
+export const RESET_REGISTER_FORM_STATE = 'RESET_REGISTER_FORM_STATE'
+export const resetRegisterForm = () => {
+  return (
+    {
+      type: RESET_REGISTER_FORM_STATE,
+    }
+  )
+}

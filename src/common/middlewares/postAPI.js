@@ -1,11 +1,10 @@
+import { camelCaseKeys, getCookie, snakeCaseKeys } from '../utils'
 
-import { camelCaseKeys, snakeCaseKeys } from '../utils'
-
-function handle400AndAbove (response, reject) {
-  const { status, body } = response
+function handle400AndAbove (request, reject) {
+  const { status, responseText } = request
   // any other 4xx error should send back a json response with errors
   try {
-    const json = JSON.parse(body)
+    const json = JSON.parse(responseText)
     reject({
       json: camelCaseKeys(json),
       status
@@ -18,9 +17,8 @@ function handle400AndAbove (response, reject) {
   }
 }
 
-function handle200To400 (response, resolve) {
-  console.log(response)
-  const jsonResponse = (response.status === 204) ? {} : camelCaseKeys(JSON.parse(response.body))
+function handle200To400 (request, resolve) {
+  const jsonResponse = (request.status === 204) ? {} : camelCaseKeys(JSON.parse(request.responseText))
   resolve({
     isServerOK: true,
     ...jsonResponse
@@ -29,20 +27,25 @@ function handle200To400 (response, resolve) {
 
 export function postApi ({ endpoint, payload, method = 'POST', payloadAsIs, skipCsrfToken }) {
   return new Promise((resolve, reject) => {
-
+    const request = new XMLHttpRequest()
     let modifiedPayload = payload
     if (!payloadAsIs) {
       modifiedPayload = snakeCaseKeys(payload)
     }
     const params = JSON.stringify(modifiedPayload)
-   
-    fetch(endpoint, { method: 'POST', body: params, headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }}).then(function(response) {
-      if (response.status >= 200 && response.status < 400) {
-        handle200To400(response, resolve)
+    request.open(method, endpoint, true)
+    if (!skipCsrfToken) {
+      request.setRequestHeader('X-CSRFToken', getCookie('csrftoken') || '')
+    }
+    request.setRequestHeader('Content-type', 'application/json')
+    request.onload = () => {
+      if (request.status >= 200 && request.status < 400) {
+        handle200To400(request, resolve)
       } else {
-        handle400AndAbove(response, reject)
+        handle400AndAbove(request, reject)
       }
-    });
+    }
+    request.send(params)
   })
 }
 
