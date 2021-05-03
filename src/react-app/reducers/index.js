@@ -18,6 +18,11 @@ const initialState = {
       phoneNumber: '',
       email: '',
       subscriptions:[{...defaultSubscription}]
+    },
+    unsubscribe: {
+      isDone: false,
+      success: false,
+      email: '',
     }
   }
 }
@@ -175,6 +180,36 @@ const mainReducer = (state = initialState, action) => {
             ...state.base.registration,
             hasRegistered: false,
             regFailure: true,
+          }
+        }
+      } 
+    }
+
+
+    case ActionTypes.UNSUBSCRIBE_EMAIL_FAILURE: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          unsubscribe: {
+            isDone: true,
+            success: false,
+          }
+        }
+      } 
+    }
+
+    case ActionTypes.UNSUBSCRIBE_EMAIL_SUCCESS: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          unsubscribe: {
+            isDone: true,
+            success: true,
+            email: action.email,
           }
         }
       } 

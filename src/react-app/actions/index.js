@@ -79,7 +79,7 @@ export const registerSubscription = (registration) => ({
     types: [REGISTER_SUBSCRIBE_REQUEST, REGISTER_SUBSCRIBE_SUCCESS, REGISTER_SUBSCRIBE_FAILURE],
     endpoint: `${BASE_ENDPOINT}/dev/subscribe`,
     payload: {
-        // "email": registration.email, 
+        "email": registration.email, 
         "phoneNumber": registration.phoneNumber, 
         "subscriptions": registration.subscriptions.map((subscription) =>{
           return {
@@ -89,6 +89,25 @@ export const registerSubscription = (registration) => ({
             'age_group': subscription.ageGroup
           }
         })
+    },
+    skipCsrfToken: true,
+    isPayloadJson: true,
+  }
+})
+
+export const UNSUBSCRIBE_EMAIL_REQUEST = 'UNSUBSCRIBE_EMAIL_REQUEST'
+export const UNSUBSCRIBE_EMAIL_SUCCESS = 'UNSUBSCRIBE_EMAIL_SUCCESS'
+export const UNSUBSCRIBE_EMAIL_FAILURE = 'UNSUBSCRIBE_EMAIL_FAILURE'
+export const unsubscribeEmail = (email, subscriptionId) => ({
+  [POST_API]: {
+    types: [UNSUBSCRIBE_EMAIL_REQUEST, UNSUBSCRIBE_EMAIL_SUCCESS, UNSUBSCRIBE_EMAIL_FAILURE],
+    endpoint: `${BASE_ENDPOINT}/dev/unsubscribe`,
+    payload: {
+        "email": email, 
+        'subscription_id': subscriptionId
+    },
+    successTypeActionProps: {
+      email,
     },
     skipCsrfToken: true,
     isPayloadJson: true,

@@ -7,6 +7,7 @@ import {
 
 import PageNotFound from './common/error-pages/PageNotFound'
 import Landing from './Landing'
+import Unsubscribe from './Unsubscribe'
 
 
 function MainRouter () {
@@ -15,6 +16,7 @@ function MainRouter () {
       render={({ location }) => (
         <Row className='overflow-auto display-block' style={{height: '100vh'}}>
           <Switch location={location}>
+            <Route path="/unsubscribe" component={Unsubscribe} key="landing" />
             <Route path="/" component={Landing} key="landing" />
             <Route render={() => <PageNotFound />} key="notFound" />
           </Switch>

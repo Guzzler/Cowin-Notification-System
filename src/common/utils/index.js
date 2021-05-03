@@ -1,4 +1,6 @@
 import { window } from "window-or-global"
+import { PicLeftOutlined, MailOutlined, ExceptionOutlined} from '@ant-design/icons'; 
+
 
 export const camelCaseKeys = (data) => {
   if (Array.isArray(data)) {
@@ -85,3 +87,24 @@ export function getCookie (name) {
 export const isSmallDevice = () => {
   return window.innerWidth < 576
 }
+
+export const landingPageSteps = [
+  {
+    color: 'peach',
+    number: 1,
+    description: 'Enter your email and phone details along with a list of each district you would like to get updates for',
+    Icon: PicLeftOutlined
+  },
+  {
+    color: 'green',
+    number: 2,
+    description: 'Check and verify your email to activate your subscription',
+    Icon: MailOutlined
+  },
+  {
+    color: 'blue',
+    number: 3,
+    description: 'Receive notifications as soon as vaccine slots are updated!',
+    Icon: ExceptionOutlined
+  }
+]
