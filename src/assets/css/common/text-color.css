@@ -1,13 +1,13 @@
 .text-green {
-  color: #00887A !important;
+  color: #64c56d !important;
 }
 
 .text-peach {
-  color: #FFCCBC !important;
+  color: #cf6666 !important;
 }
 
 .text-white {
-  color: #FFFFFF !important;
+  color: #F6F6F6 !important;
 }
 
 .text-offwhite {
@@ -15,18 +15,22 @@
 }
 
 .text-black {
-  color: #000000 !important;
+  color: #1D1D1D !important;
 }
 
-.text-cool-grey {
-  color: #D3E3FC !important;
+.text-grey {
+  color: #C2C2C2 !important;
 }
 
 .text-blue {
-  color: #77A6F7 !important;
+  color: #7084ce !important;
 }
 
 .text-light-grey {
   color: #C8CFD5 !important;
+}
+
+.text-red {
+  color: '#8B0000' !important;
 }
 

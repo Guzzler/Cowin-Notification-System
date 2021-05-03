@@ -1,9 +1,14 @@
 .background-green {
-  background-color: #00887A !important;
+  background-color: #B4F2C5 !important;
 }
 
+.background-green--dark {
+  background-color: #38B772 !important;
+}
+
+
 .background-peach {
-  background-color: #FFCCBC !important;
+  background-color: #F2B4B4 !important;
 }
 
 .background-white {
@@ -14,14 +19,18 @@
   background-color: #000000 !important;
 }
 
-.background-cool-grey {
-  background-color: #D3E3FC !important;
+.background-grey {
+  background-color: #F2F2F2 !important;
 }
 
 .background-blue {
-  background-color: #77A6F7 !important;
+  background-color: #B4D4F2 !important;
 }
 
 .background-offwhite {
   background-color: #FFFFFC !important;
+}
+
+.background-gradient {
+  background: linear-gradient(45deg, rgb(69, 72, 77) 0%, rgb(0, 0, 0) 100%);
 }

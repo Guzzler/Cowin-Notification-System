@@ -1,3 +1,5 @@
+import { window } from "window-or-global"
+
 export const camelCaseKeys = (data) => {
   if (Array.isArray(data)) {
     return camelCaseKeysInArray(data)
@@ -80,3 +82,6 @@ export function getCookie (name) {
   return cookieValue
 }
 
+export const isSmallDevice = () => {
+  return window.innerWidth < 576
+}

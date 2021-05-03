@@ -1,11 +1,11 @@
 
-import { camelCaseKeys, getCookie, snakeCaseKeys } from '../utils'
+import { camelCaseKeys, snakeCaseKeys } from '../utils'
 
-function handle400AndAbove (request, reject) {
-  const { status, responseText } = request
+function handle400AndAbove (response, reject) {
+  const { status, body } = response
   // any other 4xx error should send back a json response with errors
   try {
-    const json = JSON.parse(responseText)
+    const json = JSON.parse(body)
     reject({
       json: camelCaseKeys(json),
       status
@@ -18,8 +18,9 @@ function handle400AndAbove (request, reject) {
   }
 }
 
-function handle200To400 (request, resolve) {
-  const jsonResponse = (request.status === 204) ? {} : camelCaseKeys(JSON.parse(request.responseText))
+function handle200To400 (response, resolve) {
+  console.log(response)
+  const jsonResponse = (response.status === 204) ? {} : camelCaseKeys(JSON.parse(response.body))
   resolve({
     isServerOK: true,
     ...jsonResponse
@@ -28,25 +29,20 @@ function handle200To400 (request, resolve) {
 
 export function postApi ({ endpoint, payload, method = 'POST', payloadAsIs, skipCsrfToken }) {
   return new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest()
+
     let modifiedPayload = payload
     if (!payloadAsIs) {
       modifiedPayload = snakeCaseKeys(payload)
     }
     const params = JSON.stringify(modifiedPayload)
-    request.open(method, endpoint, true)
-    if (!skipCsrfToken) {
-      request.setRequestHeader('X-CSRFToken', getCookie('csrftoken') || '')
-    }
-    request.setRequestHeader('Content-type', 'application/json')
-    request.onload = () => {
-      if (request.status >= 200 && request.status < 400) {
-        handle200To400(request, resolve)
+   
+    fetch(endpoint, { method: 'POST', body: params, headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }}).then(function(response) {
+      if (response.status >= 200 && response.status < 400) {
+        handle200To400(response, resolve)
       } else {
-        handle400AndAbove(request, reject)
+        handle400AndAbove(response, reject)
       }
-    }
-    request.send(params)
+    });
   })
 }
 

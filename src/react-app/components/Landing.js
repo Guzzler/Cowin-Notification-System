@@ -1,34 +1,100 @@
 import React from 'react'
-import { Row, Col, Button } from 'antd'
-import { TableOutlined } from '@ant-design/icons'
+import {  Row, Col } from 'antd'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Loader from './common/Loader'
+import {
+  onChangeRegistrationField,
+  onChangeSubscriptionField,
+  onAddSubscription,
+  onRemoveSubscription,
+  getAllStates,
+  fetchDistricts,
+  registerSubscription,
+} from '../actions/index'
 
-import cowinLogo from '../../assets/images/cowin-notification-system-logo.png'
+import { PicLeftOutlined, MailOutlined, ExceptionOutlined } from '@ant-design/icons'; 
+import RegistrationStep from './landing/RegistrationStep';
+import RegistrationForm from './landing/RegistrationForm';
+import { isSmallDevice } from '../../common/utils'
 
-class BaseContent extends React.Component {
+const landingPageSteps = [
+  {
+    color: 'peach',
+    number: 1,
+    description: 'Enter your email and phone details along with a list of each district you would like to get updates for',
+    Icon: PicLeftOutlined
+  },
+  {
+    color: 'green',
+    number: 2,
+    description: 'Check and verify your email to activate your subscription',
+    Icon: MailOutlined
+  },
+  {
+    color: 'blue',
+    number: 3,
+    description: 'Receive notifications as soon as vaccine slots are updated!',
+    Icon: ExceptionOutlined
+  }
+]
+
+class Landing extends React.Component {
+
+  componentDidMount() {
+    this.props.getAllStates()
+  }
   render() {
+    const isSmall = isSmallDevice();
     return (
-      <Row className='padding--sides width-100 height-100 background-white'>
-        <Col span={24} className='center' >
-          <img src={cowinLogo} alt='cowin-notification-system-logo' height={200} />
-          <Loader />
-          <div>
-            <Link to='/subscribe'>
-              <Button type="primary" className='margin-half--ends margin--sides background-green on-hover-light' style={{border: 0 }} shape="round" icon={<TableOutlined />}>
-                Subscribe here!
-              </Button>
-            </Link>
-          </div>
+      <Row className={`${isSmall ? '' : 'margin-double--left'} padding--sides width-100 height-100`}>
+        <Col md={10} sm={24} push={isSmall ? 0 : 14}>
+          { 
+            isSmall ?
+            <div>
+              <div className={'text-black margin-double--top f24 center'}>Cowin Notification System</div>
+              <div className={'text-grey f16 center'}> Making India great one vaccine at a time!</div>
+            </div> :
+            null
+          }
+          <RegistrationForm 
+            onChangeRegistrationField={(changedField) => this.props.onChangeRegistrationField(changedField)}
+            onChangeSubscriptionField={(changedField, index) => this.props.onChangeSubscriptionField(changedField, index)}
+            onAddSubscription={() => this.props.onAddSubscription()}
+            onRemoveSubscription={(index) => this.props.onRemoveSubscription(index)}
+            fetchDistricts={(stateId, index) => this.props.fetchDistricts(stateId, index)}
+            registration={this.props.base.registration}
+            registerSubscription={() => this.props.registerSubscription(this.props.base.registration)}
+          />
+        </Col>
+        <Col md={14} sm={24} pull={isSmall ? 0 : 10}>
+        { 
+            !isSmall ?
+            <div>
+              <div className={'text-black margin-double--top f36'}>Cowin Notification System</div>
+              <div className={'text-grey  margin-double--bottom f18'}> Making India great one vaccine at a time!</div>
+            </div> :
+            null
+          }
+          <div className='text-black f18'>How it works?</div>
+          <Row className='margin--bottom'>
+          {
+            landingPageSteps.map((step, index) => {
+              return (
+                <RegistrationStep
+                  key={index} 
+                  {...step}
+                />
+              )
+            })
+          }
+          </Row>
         </Col>
       </Row>
     )
   }
 }
 
-BaseContent.propTypes = {
+Landing.propTypes = {
   base: PropTypes.object.isRequired,
 }
 
@@ -40,4 +106,11 @@ const mapStateToProps = ({ base }) => {
 
 export default connect(
   mapStateToProps, {
-})(BaseContent)
+    onChangeSubscriptionField,
+    onChangeRegistrationField,
+    onAddSubscription,
+    onRemoveSubscription,
+    getAllStates,
+    fetchDistricts,
+    registerSubscription,
+})(Landing)
