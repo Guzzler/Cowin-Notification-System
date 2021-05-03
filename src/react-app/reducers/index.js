@@ -233,7 +233,16 @@ const mainReducer = (state = initialState, action) => {
     }
 
     case ActionTypes.RESET_REGISTER_FORM_STATE: {
-      return initialState;
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          registration: {
+            ...initialState.base.registration,
+            states: state.base.registration.states,
+          }
+        }
+      } 
     }
 
     default: {
