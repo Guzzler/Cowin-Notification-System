@@ -4,6 +4,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import SubscriptionCard from './registration/SubscriptionCard';
 import { isSmallDevice } from '../../../common/utils';
 import SuccessfulRegistration from './registration/SuccessfulRegistration';
+import FailedRegistration from './registration/FailedRegistration';
 
 
 const RegistrationForm = (props) => {
@@ -25,6 +26,7 @@ const RegistrationForm = (props) => {
     email,
     states,
     hasRegistered,
+    regFailure,
   } = registration;
 
   const isSmall = isSmallDevice();
@@ -34,6 +36,10 @@ const RegistrationForm = (props) => {
         { 
           hasRegistered ?
           <SuccessfulRegistration
+            resetRegisterForm={() => resetRegisterForm()}
+          /> :
+          regFailure ?
+          <FailedRegistration
             resetRegisterForm={() => resetRegisterForm()}
           /> :
           <>

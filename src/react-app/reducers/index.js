@@ -13,6 +13,7 @@ const initialState = {
   base: {
     registration: {
       hasRegistered: false,
+      regFailure: false,
       states: [],
       phoneNumber: '',
       email: '',
@@ -159,6 +160,21 @@ const mainReducer = (state = initialState, action) => {
           registration: {
             ...state.base.registration,
             hasRegistered: true,
+          }
+        }
+      } 
+    }
+
+    case ActionTypes.REGISTER_SUBSCRIBE_FAILURE: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          registration: {
+            ...state.base.registration,
+            hasRegistered: false,
+            regFailure: true,
           }
         }
       } 
