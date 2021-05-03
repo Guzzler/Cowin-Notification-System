@@ -29,7 +29,7 @@ class Unsubscribe extends React.Component {
         <Card className='border-round padding--sides padding--ends margin--ends background-grey center' style={{width: '100%'}}>
             {
                 isDone ?
-                !success ?
+                success ?
                 <>
                     <CheckCircleOutlined className='f72 text-green' />
                     <div className='text-black center margin--top f18'>
