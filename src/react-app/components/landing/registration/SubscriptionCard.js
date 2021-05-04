@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types'
 import { Radio, Select, Row, Col, Card } from 'antd'
 import { CloseCircleFilled } from '@ant-design/icons'; 
+import ErrorMessage from '../../common/ErrorMessage';
+import Loader from "../../common/Loader";
 
 
 const { Option } = Select;
@@ -9,14 +11,16 @@ const { Option } = Select;
 const SubscriptionCard = (props) =>  {
 
   const {
-    stateId,
-    districtId,
-    vaccine,
-    ageGroup,
-    districts
-  } = props.subscription;
-
-  
+    errors,
+    subscription: {
+      stateId,
+      districtId,
+      vaccine,
+      ageGroup,
+      districts,
+      districtLoader,
+    }
+  } = props;
   return (
     <Card className='margin--bottom border-round' bodyStyle={{paddingLeft: '12px', paddingRight: '12px'}}>
       <CloseCircleFilled 
@@ -32,6 +36,8 @@ const SubscriptionCard = (props) =>  {
             props.fetchDistricts(value);
           }}>
             {
+              props.states.length === 0 ? 
+              <Option key={-99999}> <Loader />  </Option> :
               props.states.map((state, index) => {
                 return (
                   <Option key={index} value={state.stateId}> {state.stateName} </Option>
@@ -39,13 +45,16 @@ const SubscriptionCard = (props) =>  {
               })
             }
           </Select>
+          <ErrorMessage message={errors.stateId} />
         </Col>
         <Col span={12}>
           <div className='f10 text-black'> District: </div>
           <Select value={districtId} style={{ width: '90%' }} onChange={(value) => {
             props.onChangeSubscriptionField({'districtId': value});
           }}>
-            {
+            { 
+              districtLoader ?
+              <Option key={-99999}> <Loader />  </Option> :
               districts.map((district, index) => {
                 return (
                   <Option key={index} value={district.districtId}> {district.districtName} </Option>
@@ -53,6 +62,7 @@ const SubscriptionCard = (props) =>  {
               })
             }
           </Select>
+          <ErrorMessage message={errors.districtId} />
         </Col>
       </Row>
       <div className='f10 text-black'> Vaccination Type: </div>

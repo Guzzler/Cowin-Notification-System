@@ -10,18 +10,19 @@ import {
   fetchDistricts,
   registerSubscription,
   resetRegisterForm,
+  updateRegistrationFormErrors,
 } from '../actions/index'
 
 import RegistrationStep from './landing/RegistrationStep';
 import RegistrationForm from './landing/RegistrationForm';
-import { isSmallDevice, landingPageSteps } from '../../common/utils'
+import { isSmallDevice, landingPageSteps, validateRegistrationPayload } from '../../common/utils'
 
 const Landing = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllStates())
-  })
+  }, [dispatch])
   const registration = useSelector((state) => state.base.registration)
   const isSmall = isSmallDevice();
   return (
@@ -42,7 +43,15 @@ const Landing = () => {
           onRemoveSubscription={(index) => dispatch(onRemoveSubscription(index))}
           fetchDistricts={(stateId, index) => dispatch(fetchDistricts(stateId, index))}
           registration={registration}
-          registerSubscription={() => dispatch(registerSubscription(registration))}
+          registerSubscription={() => {
+            const validationParams = validateRegistrationPayload(registration)
+            if(validationParams.isValid) {
+              dispatch(registerSubscription(registration))
+            }
+            else {
+              dispatch(updateRegistrationFormErrors(validationParams.errors))
+            }
+          }}
           resetRegisterForm={() => dispatch(resetRegisterForm())}
         />
       </Col>

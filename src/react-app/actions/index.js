@@ -122,3 +122,13 @@ export const resetRegisterForm = () => {
     }
   )
 }
+
+export const UPDATE_REGISTRATION_FORM_ERRORS = 'UPDATE_REGISTRATION_FORM_ERRORS'
+export const updateRegistrationFormErrors = (errors) => {
+  return (
+    {
+      type: UPDATE_REGISTRATION_FORM_ERRORS,
+      errors,
+    }
+  )
+} 
