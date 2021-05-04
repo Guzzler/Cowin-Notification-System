@@ -105,6 +105,9 @@ const mainReducer = (state = initialState, action) => {
         ...action.changedField
       }
 
+      const errors = _.cloneDeep(state.base.registration.errors)
+      errors.subscriptions[action.index] = defaultErrorObject
+
       return {
         ...state,
         base: {
@@ -112,10 +115,7 @@ const mainReducer = (state = initialState, action) => {
           registration: {
             ...state.base.registration,
             subscriptions,
-            errors: {
-              ...state.base.registration.errors,
-              subscriptions: _.cloneDeep(defaultErrorObject.subscriptions),
-            },
+            errors,
           }
         }
       } 
