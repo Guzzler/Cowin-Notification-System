@@ -33,6 +33,11 @@ const initialState = {
       isDone: false,
       success: false,
       email: '',
+    },
+    verifyEmail: {
+      isDone: false,
+      success: false,
+      email: '',
     }
   }
 }
@@ -248,6 +253,35 @@ const mainReducer = (state = initialState, action) => {
         base: {
           ...state.base,
           unsubscribe: {
+            isDone: true,
+            success: true,
+            email: action.email,
+          }
+        }
+      } 
+    }
+
+    case ActionTypes.VERIFY_EMAIL_FAILURE: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          verifyEmail: {
+            isDone: true,
+            success: false,
+          }
+        }
+      } 
+    }
+
+    case ActionTypes.VERIFY_EMAIL_SUCCESS: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          verifyEmail: {
             isDone: true,
             success: true,
             email: action.email,

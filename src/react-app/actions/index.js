@@ -114,6 +114,25 @@ export const unsubscribeEmail = (email, subscriptionId) => ({
   }
 })
 
+export const VERIFY_EMAIL_REQUEST = 'VERIFY_EMAIL_REQUEST'
+export const VERIFY_EMAIL_SUCCESS = 'VERIFY_EMAIL_SUCCESS'
+export const VERIFY_EMAIL_FAILURE = 'VERIFY_EMAIL_FAILURE'
+export const onEmailVerify = (email, token) => ({
+  [POST_API]: {
+    types: [VERIFY_EMAIL_REQUEST, VERIFY_EMAIL_SUCCESS, VERIFY_EMAIL_FAILURE],
+    endpoint: `${BASE_ENDPOINT}/dev/verify_email?email=${email}&token=${token}`,
+    payload: {
+        "email": email, 
+        'token': token
+    },
+    successTypeActionProps: {
+      email,
+    },
+    skipCsrfToken: true,
+    isPayloadJson: true,
+  }
+})
+
 export const RESET_REGISTER_FORM_STATE = 'RESET_REGISTER_FORM_STATE'
 export const resetRegisterForm = () => {
   return (

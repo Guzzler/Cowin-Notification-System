@@ -158,8 +158,6 @@ export const validateRegistrationPayload = (registration) => {
   errors.subscriptions = []
   registration.subscriptions.forEach((subscription, index) => {
     errors.subscriptions.push(_.cloneDeep(SUBSCRIPTION_ERROR_OBJECT))
-    console.log(subscription)
-    console.log(!subscription.stateId)
     if(!subscription.stateId) {
       isValid = false
       errors.subscriptions[index]['stateId'] = 'Please select a state'
