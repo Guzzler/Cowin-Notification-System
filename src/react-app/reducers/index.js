@@ -52,6 +52,7 @@ const mainReducer = (state = initialState, action) => {
 
       const errors = _.cloneDeep(state.base.registration.errors)
       errors.subscriptions.push(defaultErrorObject)
+      errors.chosenDistricts = ''
 
       return {
         ...state,
