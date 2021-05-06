@@ -16,7 +16,7 @@ const PageFooter = () => {
     </div>
     <div>
         Contribute here - 
-        <a href='https://github.com/Guzzler/Cowin-Notification-System'>Frontend</a>,
+        <a href='https://github.com/Guzzler/Cowin-Notification-System'> Frontend</a>,
         <a href='https://github.com/abizerlokhandwala/Cowin-Notification-Service'> Backend</a>
     </div>
     <div>
