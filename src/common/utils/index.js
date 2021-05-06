@@ -1,5 +1,6 @@
-import { window } from "window-or-global"
+import { window } from "window-or-global";
 import { PicLeftOutlined, MailOutlined, ExceptionOutlined} from '@ant-design/icons'; 
+import _ from 'lodash'
 
 
 export const camelCaseKeys = (data) => {
@@ -111,3 +112,68 @@ export const landingPageSteps = [
     iconsrc: '../../assets/images/data.svg'
   }
 ]
+
+// Return true if email is in correct format, returns false if email is invalid
+const validateEmail = (email)  => {
+  // From: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+// Return true if phone is in correct format returns false if phone is invalid
+const validatePhone = (phone)  => {
+  // From: https://stackoverflow.com/questions/18351553/regular-expression-validation-for-indian-phone-number-and-mobile-number
+  // eslint-disable-next-line no-useless-escape
+  const re = /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/;
+  return re.test(String(phone));
+}
+
+export const SUBSCRIPTION_ERROR_OBJECT = {
+  stateId: '',
+  districtId: '',
+  ageGroup: '',
+  vaccine: '',
+}
+
+export const validateRegistrationPayload = (registration) => {
+  let isValid = true;
+  const errors= {}
+  if (registration.phoneNumber && !validatePhone(registration.phoneNumber)) {
+    isValid = false
+    errors.phoneNumber = 'Please enter a valid phone number'
+  }
+  if (!registration.email) {
+    isValid = false
+    errors.email= 'Please enter an email address'
+  }
+  if (!validateEmail(registration.email)) {
+    isValid = false
+    if (!errors.email) {
+      errors.email = 'Please enter a valid email address'
+    }
+  }
+
+  if (registration.subscriptions.length === 0) {
+    isValid = false
+    errors.chosenDistricts = 'Please add atleast one district'
+  }
+
+  errors.subscriptions = []
+  registration.subscriptions.forEach((subscription, index) => {
+    errors.subscriptions.push(_.cloneDeep(SUBSCRIPTION_ERROR_OBJECT))
+    if(!subscription.stateId) {
+      isValid = false
+      errors.subscriptions[index]['stateId'] = 'Please select a state'
+    }
+
+    if(!subscription.districtId) {
+      isValid = false
+      errors.subscriptions[index]['districtId'] = 'Please select a district'
+    }
+  })
+
+ return {
+   isValid,
+   errors,
+ }
+};

@@ -2,10 +2,11 @@ import React from 'react'
 import { Row, Col, Input, Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'; 
 import SubscriptionCard from './registration/SubscriptionCard';
-import { isSmallDevice } from '../../../common/utils';
+import { isSmallDevice, SUBSCRIPTION_ERROR_OBJECT } from '../../../common/utils';
 import SuccessfulRegistration from './registration/SuccessfulRegistration';
 import FailedRegistration from './registration/FailedRegistration';
 import Loader from '../common/Loader';
+import ErrorMessage from '../common/ErrorMessage';
 
 
 const RegistrationForm = (props) => {
@@ -29,6 +30,7 @@ const RegistrationForm = (props) => {
     hasRegistered,
     regFailure,
     isLoading,
+    errors,
   } = registration;
 
   const isSmall = isSmallDevice();
@@ -51,10 +53,13 @@ const RegistrationForm = (props) => {
           <>
             <div className='para-style left margin--bottom'>Choose your preferences and get vaccine availability sent straight to your mailbox!</div>
             <div className='label'>Email</div>
+            <ErrorMessage message={errors.email} />
             <Input block='true' value={email} onChange={(e) => onChangeRegistrationField({'email': e.target.value})} />
             <div className='label'>Phone Number(optional) </div>
+            <ErrorMessage message={errors.phoneNumber} />
             <Input block='true' value={phoneNumber} onChange={(e) => onChangeRegistrationField({'phoneNumber': e.target.value})}/>
             <div className='label'>Chosen Districts: </div>
+            <ErrorMessage message={errors.chosenDistricts} />
             {
               subscriptions.map((subscription, index) => {
                 return (
@@ -65,6 +70,7 @@ const RegistrationForm = (props) => {
                     onRemoveSubscription={() => onRemoveSubscription(index)}
                     fetchDistricts={(stateId) => fetchDistricts(stateId, index)}
                     states={states}
+                    errors={errors.subscriptions[index] || SUBSCRIPTION_ERROR_OBJECT}
                   /> 
                 )
               })

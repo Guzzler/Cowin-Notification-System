@@ -1,5 +1,6 @@
 import * as ActionTypes from '../actions';
 import _ from 'lodash'
+import { SUBSCRIPTION_ERROR_OBJECT } from '../../common/utils'
 
 const defaultSubscription = {
   districtId: '',
@@ -7,6 +8,13 @@ const defaultSubscription = {
   vaccine: 'both',
   ageGroup: 'both',
   districts: [],
+  districtLoader: false,
+}
+
+const defaultErrorObject = {
+  phoneNumber: '',
+  email: '',
+  subscriptions: [{SUBSCRIPTION_ERROR_OBJECT}]
 }
 
 const initialState = {
@@ -18,9 +26,15 @@ const initialState = {
       states: [],
       phoneNumber: '',
       email: '',
-      subscriptions:[{...defaultSubscription}]
+      subscriptions:[{..._.cloneDeep(defaultSubscription)}],
+      errors: _.cloneDeep(defaultErrorObject),
     },
     unsubscribe: {
+      isDone: false,
+      success: false,
+      email: '',
+    },
+    verifyEmail: {
       isDone: false,
       success: false,
       email: '',
@@ -36,6 +50,10 @@ const mainReducer = (state = initialState, action) => {
       const subscriptions = _.cloneDeep(state.base.registration.subscriptions)
       subscriptions.push(defaultSubscription)
 
+      const errors = _.cloneDeep(state.base.registration.errors)
+      errors.subscriptions.push(defaultErrorObject)
+      errors.chosenDistricts = ''
+
       return {
         ...state,
         base: {
@@ -43,6 +61,7 @@ const mainReducer = (state = initialState, action) => {
           registration: {
             ...state.base.registration,
             subscriptions,
+            errors,
           }
         }
       } 
@@ -53,6 +72,9 @@ const mainReducer = (state = initialState, action) => {
       const subscriptions = _.cloneDeep(state.base.registration.subscriptions)
       subscriptions.splice(action.index, 1);
 
+      const errors = _.cloneDeep(state.base.registration.errors)
+      errors.subscriptions.splice(action.index, 1);
+
       return {
         ...state,
         base: {
@@ -60,6 +82,7 @@ const mainReducer = (state = initialState, action) => {
           registration: {
             ...state.base.registration,
             subscriptions,
+            errors,
           }
         }
       } 
@@ -73,7 +96,8 @@ const mainReducer = (state = initialState, action) => {
           ...state.base,
           registration: {
             ...state.base.registration,
-            ...action.changedField
+            ...action.changedField,
+            errors: _.cloneDeep(defaultErrorObject),
           }
         }
       } 
@@ -87,6 +111,9 @@ const mainReducer = (state = initialState, action) => {
         ...action.changedField
       }
 
+      const errors = _.cloneDeep(state.base.registration.errors)
+      errors.subscriptions[action.index] = defaultErrorObject
+
       return {
         ...state,
         base: {
@@ -94,6 +121,7 @@ const mainReducer = (state = initialState, action) => {
           registration: {
             ...state.base.registration,
             subscriptions,
+            errors,
           }
         }
       } 
@@ -119,7 +147,8 @@ const mainReducer = (state = initialState, action) => {
       const subscriptions = _.cloneDeep(state.base.registration.subscriptions)
       subscriptions[action.index] = {
         ...subscriptions[action.index],
-        districts: action.response.data 
+        districts: action.response.data,
+        districtLoader: false,
       }
 
 
@@ -142,6 +171,7 @@ const mainReducer = (state = initialState, action) => {
         ...subscriptions[action.index],
         districts: [],
         districtId: '',
+        districtLoader: true,
       }
 
 
@@ -232,6 +262,35 @@ const mainReducer = (state = initialState, action) => {
       } 
     }
 
+    case ActionTypes.VERIFY_EMAIL_FAILURE: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          verifyEmail: {
+            isDone: true,
+            success: false,
+          }
+        }
+      } 
+    }
+
+    case ActionTypes.VERIFY_EMAIL_SUCCESS: {
+
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          verifyEmail: {
+            isDone: true,
+            success: true,
+            email: action.email,
+          }
+        }
+      } 
+    }
+
     case ActionTypes.RESET_REGISTER_FORM_STATE: {
       return {
         ...state,
@@ -240,6 +299,19 @@ const mainReducer = (state = initialState, action) => {
           registration: {
             ...initialState.base.registration,
             states: state.base.registration.states,
+          }
+        }
+      } 
+    }
+
+    case ActionTypes.UPDATE_REGISTRATION_FORM_ERRORS :{
+      return {
+        ...state,
+        base: {
+          ...state.base,
+          registration: {
+            ...state.base.registration,
+            errors: action.errors,
           }
         }
       } 
