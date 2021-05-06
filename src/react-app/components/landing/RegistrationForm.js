@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col, Input, Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'; 
 import SubscriptionCard from './registration/SubscriptionCard';
-import { isSmallDevice, SUBSCRIPTION_ERROR_OBJECT } from '../../../common/utils';
+import { SUBSCRIPTION_ERROR_OBJECT } from '../../../common/utils';
 import SuccessfulRegistration from './registration/SuccessfulRegistration';
 import FailedRegistration from './registration/FailedRegistration';
 import Loader from '../common/Loader';
@@ -33,7 +33,6 @@ const RegistrationForm = (props) => {
     errors,
   } = registration;
 
-  const isSmall = isSmallDevice();
   return (
     <div>
       <div className='subheader-style margin-double--top no-margin--bottom'> Register</div>

@@ -1,5 +1,7 @@
 import { window } from "window-or-global";
-import { PicLeftOutlined, MailOutlined, ExceptionOutlined} from '@ant-design/icons'; 
+import infoSvg from '../../assets/images/info.svg'
+import dataSvg from '../../assets/images/data.svg'
+import notifSvg from '../../assets/images/notif.svg'
 import _ from 'lodash'
 
 
@@ -91,25 +93,19 @@ export const isSmallDevice = () => {
 
 export const landingPageSteps = [
   {
-    color: 'peach',
     number: 1,
     description: 'Enter your email and phone details along with a list of each district you would like to get updates for',
-    Icon: PicLeftOutlined,
-    iconsrc: 'info'
+    iconSrc: infoSvg
   },
   {
-    color: 'green',
     number: 2,
-    description: 'Receive notifications as soon as vaccine slots are updated!',
-    Icon: MailOutlined,
-    iconsrc:  '../../assets/images/notif.svg'
+    description: 'Check your inbox for an email to activate your subscription',
+    iconSrc:  notifSvg
   },
   {
-    color: 'blue',
     number: 3,
-    description: 'Go through our database of districts to see availability of vaccination slots here',
-    Icon: ExceptionOutlined,
-    iconsrc: '../../assets/images/data.svg'
+    description: 'Receive notifications as soon as vaccine slots are updated!',
+    iconSrc: dataSvg
   }
 ]
 
