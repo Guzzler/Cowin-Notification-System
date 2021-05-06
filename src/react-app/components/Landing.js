@@ -30,8 +30,8 @@ class Landing extends React.Component {
           { 
             isSmall ?
             <div>
-              <div className={'text-black margin-double--top f24 center'}>Cowin Notification System</div>
-              <div className={'text-grey f16 center'}> Making India great one vaccine at a time!</div>
+              <div className={'text-black margin-double--top f24 center'}>Vaccine Post</div>
+              <div className={'text-grey f16 center'}>A Cowin Vaccination Notifiication System</div>
             </div> :
             null
           }
@@ -50,12 +50,12 @@ class Landing extends React.Component {
         { 
             !isSmall ?
             <div>
-              <div className={'text-black margin-double--top f36'}>Cowin Notification System</div>
-              <div className={'text-grey  margin-double--bottom f18'}> Making India great one vaccine at a time!</div>
+              <div className={'margin-double--top title-style'}>Vaccine Post</div>
+              <div className={'margin-double--bottom subtitle-style'}>A Cowin Vaccination Notifiication System</div>
             </div> :
             null
           }
-          <div className='text-black f18'>How it works?</div>
+          <div className='subheader-style'>How it works?</div>
           <Row className='margin--bottom'>
           {
             landingPageSteps.map((step, index) => {
