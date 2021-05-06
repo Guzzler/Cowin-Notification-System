@@ -83,7 +83,7 @@ const RegistrationForm = (props) => {
               className='submit-button margin--top' 
               onClick={() => registerSubscription()} 
               block='true' > 
-                Subscribe to notifications! 
+                Subscribe to Notifications! 
             </Button>
           </>
         }
