@@ -5,22 +5,22 @@ import { HeartFilled } from '@ant-design/icons';
 const PageFooter = () => {
   return (
     <div>
-    <div >Made with <HeartFilled /></div>
-    <div>
+    <div >Made with <HeartFilled /> by Good Samaritans</div>
+    {/* <div>
         By - 
-        <a href='https://github.com/abizerlokhandwala'> Abizer Lokhandwala</a>,
-        <a href='https://github.com/shloksingh10'> Shlok Singh</a>,
-        <a href='https://github.com/mrmathur'> Arpit Mathur</a>,
-        <a href='https://github.com/Guzzler'> Sharang Pai</a>,
-        <a href='https://www.linkedin.com/in/pujan-parikh-818234165/'> Pujan Parikh</a>
-    </div>
+        <a href='https://github.com/abizerlokhandwala' target="_blank" rel="noopener noreferrer"> Abizer Lokhandwala</a>,
+        <a href='https://github.com/shloksingh10' target="_blank" rel="noopener noreferrer"> Shlok Singh</a>,
+        <a href='https://github.com/mrmathur' target="_blank" rel="noopener noreferrer"> Arpit Mathur</a>,
+        <a href='https://github.com/Guzzler' target="_blank" rel="noopener noreferrer"> Sharang Pai</a>,
+        <a href='https://www.linkedin.com/in/pujan-parikh-818234165/' target="_blank" rel="noopener noreferrer"> Pujan Parikh</a>
+    </div> */}
     <div>
         Contribute here - 
-        <a href='https://github.com/Guzzler/Cowin-Notification-System'> Frontend</a>,
-        <a href='https://github.com/abizerlokhandwala/Cowin-Notification-Service'> Backend</a>
+        <a href='https://github.com/Guzzler/Cowin-Notification-System' target="_blank" rel="noopener noreferrer"> Frontend</a>,
+        <a href='https://github.com/abizerlokhandwala/Cowin-Notification-Service' target="_blank" rel="noopener noreferrer"> Backend</a>
     </div>
     <div>
-        <Link to='/privacy'>Privacy Policy</Link>
+        <a href='https://vaccinepost.co.in/privacy' target="_blank" rel="noopener noreferrer">Privacy Policy</a>
     </div>
     </div>
   )
