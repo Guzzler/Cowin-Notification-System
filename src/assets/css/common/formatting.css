@@ -2,6 +2,10 @@
   text-align: center !important;
 }
 
+.left {
+  text-align: left !important;
+}
+
 .strong {
   font-weight: bold !important;
 }
@@ -31,5 +35,5 @@
 }
 
 .border-round {
-  border-radius: 8px! important;
+  border-radius: 8px ! important;
 }

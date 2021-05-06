@@ -35,8 +35,10 @@ const RegistrationForm = (props) => {
 
   const isSmall = isSmallDevice();
   return (
-    <Row className='padding-double--ends'>
-			<Col className={`background-grey ${isSmall ? '' : 'margin-double--top'} border-round padding--sides padding--ends`} md={22} lg={18} sm={24} >
+    <div>
+      <div className='subheader-style margin-double--top no-margin--bottom'> Register</div>
+      <Row className=''>
+			<Col className={`background-grey margin-one-half--top border-round padding--sides padding--ends`} md={22} lg={18} sm={24} >
         { 
           isLoading ?
           <Loader /> :
@@ -49,15 +51,14 @@ const RegistrationForm = (props) => {
             resetRegisterForm={() => resetRegisterForm()}
           /> :
           <>
-            <div className='text-black f24 center margin--ends'> Register</div>
-            <div className='text-black f14 margin--bottom'>Choose your preferences and get vaccine availability sent straight to your mailbox!</div>
-            <div className='f10'>Email</div>
-            <Input block='true' value={email} onChange={(e) => onChangeRegistrationField({'email': e.target.value})} />
+            <div className='para-style left margin--bottom'>Choose your preferences and get vaccine availability sent straight to your mailbox!</div>
+            <div className='label'>Email</div>
             <ErrorMessage message={errors.email} />
-            <div className='f10'>Phone Number(optional) </div>
-            <Input block='true' value={phoneNumber} onChange={(e) => onChangeRegistrationField({'phoneNumber': e.target.value})}/>
+            <Input block='true' value={email} onChange={(e) => onChangeRegistrationField({'email': e.target.value})} />
+            <div className='label'>Phone Number(optional) </div>
             <ErrorMessage message={errors.phoneNumber} />
-            <div className='f10'>Chosen Districts: </div>
+            <Input block='true' value={phoneNumber} onChange={(e) => onChangeRegistrationField({'phoneNumber': e.target.value})}/>
+            <div className='label'>Chosen Districts: </div>
             <ErrorMessage message={errors.chosenDistricts} />
             {
               subscriptions.map((subscription, index) => {
@@ -80,7 +81,7 @@ const RegistrationForm = (props) => {
               null
             }
             <Button 
-              className='background-green--dark text-white margin--top border-round f12' 
+              className='submit-button margin--top' 
               onClick={() => registerSubscription()} 
               block='true' > 
                 Signup to recieve notifications 
@@ -89,6 +90,7 @@ const RegistrationForm = (props) => {
         }
       </Col>
 		</Row>
+    </div>    
   )
 }
 

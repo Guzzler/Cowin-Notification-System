@@ -94,19 +94,22 @@ export const landingPageSteps = [
     color: 'peach',
     number: 1,
     description: 'Enter your email and phone details along with a list of each district you would like to get updates for',
-    Icon: PicLeftOutlined
+    Icon: PicLeftOutlined,
+    iconsrc: 'info'
   },
   {
     color: 'green',
     number: 2,
-    description: 'Check and verify your email to activate your subscription',
-    Icon: MailOutlined
+    description: 'Receive notifications as soon as vaccine slots are updated!',
+    Icon: MailOutlined,
+    iconsrc:  '../../assets/images/notif.svg'
   },
   {
     color: 'blue',
     number: 3,
-    description: 'Receive notifications as soon as vaccine slots are updated!',
-    Icon: ExceptionOutlined
+    description: 'Go through our database of districts to see availability of vaccination slots here',
+    Icon: ExceptionOutlined,
+    iconsrc: '../../assets/images/data.svg'
   }
 ]
 
