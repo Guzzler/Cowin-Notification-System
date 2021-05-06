@@ -54,7 +54,7 @@ const RegistrationForm = (props) => {
             <div className='label'>Email</div>
             <ErrorMessage message={errors.email} />
             <Input block='true' value={email} onChange={(e) => onChangeRegistrationField({'email': e.target.value})} />
-            <div className='label'>Phone Number(optional) </div>
+            <div className='label'>Phone Number (optional) </div>
             <ErrorMessage message={errors.phoneNumber} />
             <Input block='true' value={phoneNumber} onChange={(e) => onChangeRegistrationField({'phoneNumber': e.target.value})}/>
             <div className='label'>Chosen Districts: </div>
@@ -83,7 +83,7 @@ const RegistrationForm = (props) => {
               className='submit-button margin--top' 
               onClick={() => registerSubscription()} 
               block='true' > 
-                Signup to recieve notifications 
+                Subscribe to notifications! 
             </Button>
           </>
         }

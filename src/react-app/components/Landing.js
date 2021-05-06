@@ -31,7 +31,7 @@ const Landing = () => {
           isSmall ?
           <div>
             <div className={'text-black margin-double--top f24 center'}>Vaccine Post</div>
-            <div className={'text-grey f16 center'}>A Cowin Vaccination Notifiication System</div>
+            <div className={'text-grey f16 center'}>A Cowin Vaccination Notification System</div>
           </div> :
           null
         }
@@ -58,12 +58,12 @@ const Landing = () => {
       { 
           !isSmall ?
           <div>
-            <div className={'margin-double--top title-style'}>Vaccine Post</div>
-            <div className={'margin-double--bottom subtitle-style'}>A Cowin Vaccination Notifiication System</div>
+            <div className={'margin-double--top title-style'}>VaccinePost</div>
+            <div className={'margin-double--bottom subtitle-style'}>A Co-WIN Vaccination Notification System</div>
           </div> :
           null
         }
-        <div className='subheader-style'>How it works?</div>
+        <div className={`subheader-style ${isSmall ? 'margin--top' : ''}`}>How it works?</div>
         <Row className='margin--bottom'>
         {
           landingPageSteps.map((step, index) => {
