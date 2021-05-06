@@ -9,7 +9,7 @@ const { Content, Footer } = Layout
 function Base () {
   return (
     <Layout className='background-white'>
-      <Content theme='light' style={{'minHeight': '85vh'}}>
+      <Content theme='light' style={{'minHeight': '90vh'}}>
         <MainRouter />
       </Content>
       <Footer className='margin--top center'>
