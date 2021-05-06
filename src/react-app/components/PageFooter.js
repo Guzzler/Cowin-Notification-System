@@ -5,7 +5,7 @@ import { HeartFilled } from '@ant-design/icons';
 const PageFooter = () => {
   return (
     <div>
-    <div >Made with <HeartFilled /> by Good Samaritans</div>
+    <div >Made with <HeartFilled /></div>
     {/* <div>
         By - 
         <a href='https://github.com/abizerlokhandwala' target="_blank" rel="noopener noreferrer"> Abizer Lokhandwala</a>,
