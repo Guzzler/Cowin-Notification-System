@@ -2,6 +2,10 @@
   font-family: 'Rubik', 'sans';
 }
 
+a {
+  color: #665DF5
+}
+
 .title-style {
   font-family: 'Rubik';
   font-style: normal;

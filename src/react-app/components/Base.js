@@ -2,15 +2,20 @@ import React from 'react'
 import { Layout } from 'antd'
 
 import MainRouter from './MainRouter'
+import PageFooter from './PageFooter';
 
-const { Content } = Layout
+const { Content, Footer } = Layout
 
 function Base () {
   return (
-    <Layout className='height-min-100 background-white'>
-      <Content theme='light' className='height-min-100'>
+    <Layout className='background-white'>
+      <Content theme='light' style={{'minHeight': '90vh'}}>
         <MainRouter />
       </Content>
+      <Footer className='center'>
+        <PageFooter />
+      </Footer>
+
     </Layout>
   )
 }
