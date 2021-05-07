@@ -51,10 +51,10 @@ const RegistrationForm = (props) => {
           /> :
           <>
             <div className='para-style left margin--bottom'>Choose your preferences and get vaccine availability sent straight to your mailbox!</div>
-            <div className='label'>Email</div>
+            <div className='label'>Email:</div>
             <ErrorMessage message={errors.email} />
             <Input block='true' value={email} onChange={(e) => onChangeRegistrationField({'email': e.target.value})} />
-            <div className='label'>Phone Number (optional) </div>
+            <div className='label'>Phone Number (optional):</div>
             <ErrorMessage message={errors.phoneNumber} />
             <Input block='true' value={phoneNumber} onChange={(e) => onChangeRegistrationField({'phoneNumber': e.target.value})}/>
             <div className='label'>Chosen Districts: </div>
