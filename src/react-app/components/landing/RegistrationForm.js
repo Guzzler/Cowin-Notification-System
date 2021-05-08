@@ -35,7 +35,6 @@ const RegistrationForm = (props) => {
 
   return (
     <div>
-      <div className='subheader-style margin-double--top no-margin--bottom'> Register</div>
       <Row className=''>
 			<Col className={`background-grey margin-one-half--top border-round padding--sides padding--ends`} md={22} lg={18} sm={24} >
         { 
@@ -50,6 +49,8 @@ const RegistrationForm = (props) => {
             resetRegisterForm={() => resetRegisterForm()}
           /> :
           <>
+
+            <div className='subheader-style margin---top margin-double--bottom center'> Register</div>
             <div className='para-style left margin--bottom'>Choose your preferences and get vaccine availability sent straight to your mailbox!</div>
             <div className='label'>Email:</div>
             <ErrorMessage message={errors.email} />
