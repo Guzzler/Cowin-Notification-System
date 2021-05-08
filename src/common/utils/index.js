@@ -94,12 +94,12 @@ export const isSmallDevice = () => {
 export const landingPageSteps = [
   {
     number: 1,
-    description: 'Enter your email and phone details along with a list of each district you would like to get updates for',
+    description: 'Enter your email, phone and the districts you want to get updates for.',
     iconSrc: infoSvg
   },
   {
     number: 2,
-    description: 'Check your inbox for an email to activate your subscription',
+    description: 'Check your inbox for an email to activate your subscription.',
     iconSrc:  notifSvg
   },
   {
