@@ -13,12 +13,11 @@ const RegistrationStep = (props) => {
   const isSmall = isSmallDevice();
   return (
     <Col 
-      className={`border-round padding-half--sides padding-half--ends margin-double--top`} 
+      className={`border-round border-grey padding-half--sides padding-half--ends margin-double--top`} 
       offset={(!isSmall && number!==1) ? 1 : 0} 
       xs={24} 
       sm={24} 
       md={6}
-      style={{border: '1px solid #CAC0C0'}}
     >
       <div className={`margin--bottom ${isSmall ? 'f24' : 'f48'} stepnum-style`}>{number}</div>
       <span className={`center margin-double--bottom ${isSmall ? 'f72' : 'f108'}`} style={{display:'table', margin:'0 auto'}}>
