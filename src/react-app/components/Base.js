@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Affix } from 'antd'
 
 import MainRouter from './MainRouter'
 import PageFooter from './PageFooter';
@@ -15,10 +15,9 @@ function Base () {
       <Content theme='light' style={{'minHeight': '90vh'}} className="background-white">
         <MainRouter />
       </Content>
-      <Footer className={isSmall ?  'center' : 'background-white'}>
+      <Footer className={isSmall ?  'center mobile-footer' : 'background-white web-footer'}>
         <PageFooter />
       </Footer>
-
     </Layout>
   )
 }

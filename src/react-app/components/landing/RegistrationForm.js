@@ -7,6 +7,10 @@ import SuccessfulRegistration from './registration/SuccessfulRegistration';
 import FailedRegistration from './registration/FailedRegistration';
 import Loader from '../common/Loader';
 import ErrorMessage from '../common/ErrorMessage';
+import { isSmallDevice } from '../../../common/utils'
+
+
+const isSmall = isSmallDevice();
 
 
 const RegistrationForm = (props) => {
@@ -35,8 +39,12 @@ const RegistrationForm = (props) => {
 
   return (
     <div>
-      <Row className=''>
-			<Col className={`background-grey margin-one-half--top border-round padding--sides padding--ends`} md={22} lg={18} sm={24} >
+      <Row className={`${isSmall ? 'bring-to-front margin-one-half--top' : 'bring-to-front margin-large--top'}`}>
+      <Row>
+        <div className='subheader-style margin---top margin-double--bottom center'> Register</div>
+      </Row>
+      <Row>
+			<Col className={`background-grey border-round padding--sides padding--ends`} md={22} lg={18} sm={24} >
         { 
           isLoading ?
           <Loader /> :
@@ -49,8 +57,6 @@ const RegistrationForm = (props) => {
             resetRegisterForm={() => resetRegisterForm()}
           /> :
           <>
-
-            <div className='subheader-style margin---top margin-double--bottom center'> Register</div>
             <div className='para-style left margin--bottom'>Choose your preferences and get vaccine availability sent straight to your mailbox!</div>
             <div className='label'>Email:</div>
             <ErrorMessage message={errors.email} />
@@ -89,6 +95,7 @@ const RegistrationForm = (props) => {
           </>
         }
       </Col>
+      </Row>
 		</Row>
     </div>    
   )

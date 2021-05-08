@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {  Row, Col } from 'antd'
+import { Layout, Row, Col } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   onChangeRegistrationField,
@@ -56,26 +56,33 @@ const Landing = () => {
       </Col>
       <Col md={14} sm={24} pull={isSmall ? 0 : 10}>
       { 
+
           !isSmall ?
-          <div>
-            <div className={'margin-double--top title-style'}>VaccinePost</div>
-            <div className={'margin-double--bottom subtitle-style'}>A Co-WIN Vaccination Notification System</div>
-          </div> :
+          <Layout className={'web-content background-white'}>
+            <div>
+              <div className={'margin-double--top title-style'}>VaccinePost</div>
+              <div className={'margin-double--bottom subtitle-style'}>A Co-WIN Vaccination Notification System</div>
+            </div> 
+          </Layout>
+          :
           null
         }
-        <div className={`subheader-style ${isSmall ? 'margin-double--top' : ''}`}>How it works:</div>
-        <Row className='margin--bottom'>
-        {
-          landingPageSteps.map((step, index) => {
-            return (
-              <RegistrationStep
-                key={index} 
-                {...step}
-              />
-            )
-          })
-        }
-        </Row>
+  
+          <Col className={`${isSmall ? "no-background" : "no-background web-steps"}`} md={14} sm={24} >
+            <div className={`subheader-style ${isSmall ? 'margin-double--top' : ''}`}>How it works:</div>
+            <Row className='margin--bottom'>
+            {
+              landingPageSteps.map((step, index) => {
+                return (
+                  <RegistrationStep
+                    key={index} 
+                    {...step}
+                  />
+                )
+              })
+            }
+            </Row>
+          </Col>
       </Col>
     </Row>
   )

@@ -79,3 +79,27 @@ a {
 
   color: #FFFFFF;
 }
+
+
+.mobile-footer {
+  position: relative;
+}
+
+.web-footer {
+  position: fixed;
+  bottom: 10px;
+}
+
+.web-content {
+  position: fixed;
+  top: 0px;
+}
+
+.web-steps {
+  position: fixed;
+  top: 150px;
+}
+
+.bring-to-front {
+  z-index: 100;
+}
