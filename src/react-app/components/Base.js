@@ -3,16 +3,19 @@ import { Layout } from 'antd'
 
 import MainRouter from './MainRouter'
 import PageFooter from './PageFooter';
+import  { isSmallDevice } from '../../common/utils';
+
+const isSmall = isSmallDevice();
 
 const { Content, Footer } = Layout
 
 function Base () {
   return (
-    <Layout className='background-white'>
-      <Content theme='light' style={{'minHeight': '90vh'}}>
+    <Layout>
+      <Content theme='light' style={{'minHeight': '90vh'}} className="background-white">
         <MainRouter />
       </Content>
-      <Footer className='margin--top center'>
+      <Footer className={isSmall ?  'center' : 'background-white'}>
         <PageFooter />
       </Footer>
 
