@@ -63,7 +63,7 @@ const Landing = () => {
           </div> :
           null
         }
-        <div className={`subheader-style ${isSmall ? 'margin--top' : ''}`}>How it works:</div>
+        <div className={`subheader-style ${isSmall ? 'margin-double--top' : ''}`}>How it works:</div>
         <Row className='margin--bottom'>
         {
           landingPageSteps.map((step, index) => {
