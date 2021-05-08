@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Affix } from 'antd'
+import { Layout } from 'antd'
 
 import MainRouter from './MainRouter'
 import PageFooter from './PageFooter';

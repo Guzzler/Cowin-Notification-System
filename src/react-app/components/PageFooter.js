@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
 import { HeartFilled } from '@ant-design/icons'; 
 
 const PageFooter = () => {
