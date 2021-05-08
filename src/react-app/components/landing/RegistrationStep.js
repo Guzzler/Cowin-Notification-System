@@ -18,6 +18,7 @@ const RegistrationStep = (props) => {
       xs={24} 
       sm={24} 
       md={6}
+      style={{border: '1px solid #CAC0C0'}}
     >
       <div className={`margin--bottom ${isSmall ? 'f24' : 'f48'} stepnum-style`}>{number}</div>
       <span className={`center margin-double--bottom ${isSmall ? 'f72' : 'f108'}`} style={{display:'table', margin:'0 auto'}}>
