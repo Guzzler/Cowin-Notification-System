@@ -77,7 +77,7 @@ export const REGISTER_SUBSCRIBE_FAILURE = 'REGISTER_SUBSCRIBE_FAILURE'
 export const registerSubscription = (registration) => ({
   [POST_API]: {
     types: [REGISTER_SUBSCRIBE_REQUEST, REGISTER_SUBSCRIBE_SUCCESS, REGISTER_SUBSCRIBE_FAILURE],
-    endpoint: `${BASE_ENDPOINT}/dev/subscribe/test`,
+    endpoint: `${BASE_ENDPOINT}/dev/subscribe`,
     payload: {
         "email": registration.email, 
         "phoneNumber": registration.phoneNumber, 
