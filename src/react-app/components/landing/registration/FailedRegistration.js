@@ -8,7 +8,7 @@ const FailedRegistration = (props) => {
 		<div className='center'>
 			<CloseCircleOutlined className='f72 text-red' />
 			<div className=' center margin--top para-style'>
-                Something went wrong and we could not process your request. Please Try again.
+                Something went wrong and we could not process your request. Please try again.
 			</div>
 			<Button block='true' className='submit-button margin--ends text-white' onClick={() => props.resetRegisterForm()}> Try again</Button>
 		</div>

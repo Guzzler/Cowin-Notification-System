@@ -2,9 +2,9 @@ import React from 'react'
 import { Spin, Space } from 'antd';
 
 
-const Loader = () => {
+const Loader = (props) => {
   return (
-    <div className='center'>
+    <div className='center' style={props.style || {}}>
       <Space size="middle" className='center'>
         <Spin size="large" />
       </Space>

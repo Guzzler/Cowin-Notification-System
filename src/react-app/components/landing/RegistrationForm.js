@@ -40,11 +40,11 @@ const RegistrationForm = (props) => {
   return (
     <div>
       <Row className={`${isSmall ? 'bring-to-front margin-one-half--top' : 'bring-to-front margin-large--top'}`}>
-      <Row>
-        <div className='subheader-style margin---top margin-double--bottom center'> Register</div>
+      <Row> 
+        <Col md={22} lg={18} sm={24} className='subheader-style margin---top margin-double--bottom'> <div style={{minWidth: isSmall ? '90vw' : '40vw'}}>Register </div></Col>
       </Row>
-      <Row>
-			<Col className={`background-grey border-round padding--sides padding--ends`} md={22} lg={18} sm={24} >
+      <Row style={{display: 'contents'}}>
+			<Col className={`background-grey border-round padding--sides padding--ends`} md={22} lg={18} sm={24} style={{width: '100%'}}>
         { 
           isLoading ?
           <Loader /> :
