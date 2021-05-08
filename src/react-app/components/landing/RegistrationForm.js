@@ -7,6 +7,10 @@ import SuccessfulRegistration from './registration/SuccessfulRegistration';
 import FailedRegistration from './registration/FailedRegistration';
 import Loader from '../common/Loader';
 import ErrorMessage from '../common/ErrorMessage';
+import { isSmallDevice } from '../../../common/utils'
+
+
+const isSmall = isSmallDevice();
 
 
 const RegistrationForm = (props) => {
@@ -35,9 +39,12 @@ const RegistrationForm = (props) => {
 
   return (
     <div>
-      <div className='subheader-style margin-double--top no-margin--bottom'> Register</div>
-      <Row className=''>
-			<Col className={`background-grey margin-one-half--top border-round padding--sides padding--ends`} md={22} lg={18} sm={24} >
+      <Row className={`${isSmall ? 'bring-to-front margin-one-half--top' : 'bring-to-front margin-large--top'}`}>
+      <Row> 
+        <Col md={22} lg={18} sm={24} className='subheader-style margin---top margin-double--bottom'> <div style={{minWidth: isSmall ? '90vw' : '40vw'}}>Register </div></Col>
+      </Row>
+      <Row style={{display: 'contents'}}>
+			<Col className={`background-grey border-round padding--sides padding--ends`} md={22} lg={18} sm={24} style={{width: '100%'}}>
         { 
           isLoading ?
           <Loader /> :
@@ -88,6 +95,7 @@ const RegistrationForm = (props) => {
           </>
         }
       </Col>
+      </Row>
 		</Row>
     </div>    
   )

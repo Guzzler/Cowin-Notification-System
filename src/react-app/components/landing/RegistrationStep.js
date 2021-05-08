@@ -13,7 +13,7 @@ const RegistrationStep = (props) => {
   const isSmall = isSmallDevice();
   return (
     <Col 
-      className={`border-round padding-half--sides padding-half--ends margin-double--top`} 
+      className={`border-round border-grey padding-half--sides padding-half--ends margin-double--top`} 
       offset={(!isSmall && number!==1) ? 1 : 0} 
       xs={24} 
       sm={24} 

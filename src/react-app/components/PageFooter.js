@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
 import { HeartFilled } from '@ant-design/icons'; 
 
 const PageFooter = () => {
@@ -17,11 +16,10 @@ const PageFooter = () => {
     <div>
         Contribute here - 
         <a href='https://github.com/Guzzler/Cowin-Notification-System' target="_blank" rel="noopener noreferrer"> Frontend</a>,
-        <a href='https://github.com/abizerlokhandwala/Cowin-Notification-Service' target="_blank" rel="noopener noreferrer"> Backend</a>
+        <a href='https://github.com/abizerlokhandwala/Cowin-Notification-Service' target="_blank" rel="noopener noreferrer"> Backend</a>, 
+        <a href='https://vaccinepost.co.in/privacy' target="_blank" rel="noopener noreferrer"> Privacy Policy</a>
     </div>
-    <div>
-        <a href='https://vaccinepost.co.in/privacy' target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-    </div>
+    
     </div>
   )
 }

@@ -15,8 +15,8 @@ const Unsubscribe = () =>  {
   const search = useLocation().search
   useEffect(() => {
     const email = new URLSearchParams(search).get('email');
-    const subscriptionId = new URLSearchParams(search).get('subscription_id');
-    dispatch(unsubscribeEmail(email,subscriptionId))
+    const token = new URLSearchParams(search).get('token');
+    dispatch(unsubscribeEmail(email,token))
   },[search, dispatch]);
   const unsubscribe = useSelector((state) => state.base.unsubscribe);
   const {

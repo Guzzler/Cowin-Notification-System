@@ -77,7 +77,7 @@ export const REGISTER_SUBSCRIBE_FAILURE = 'REGISTER_SUBSCRIBE_FAILURE'
 export const registerSubscription = (registration) => ({
   [POST_API]: {
     types: [REGISTER_SUBSCRIBE_REQUEST, REGISTER_SUBSCRIBE_SUCCESS, REGISTER_SUBSCRIBE_FAILURE],
-    endpoint: `${BASE_ENDPOINT}/dev/subscribe`,
+    endpoint: `${BASE_ENDPOINT}/dev/subscribe/test`,
     payload: {
         "email": registration.email, 
         "phoneNumber": registration.phoneNumber, 
@@ -98,13 +98,13 @@ export const registerSubscription = (registration) => ({
 export const UNSUBSCRIBE_EMAIL_REQUEST = 'UNSUBSCRIBE_EMAIL_REQUEST'
 export const UNSUBSCRIBE_EMAIL_SUCCESS = 'UNSUBSCRIBE_EMAIL_SUCCESS'
 export const UNSUBSCRIBE_EMAIL_FAILURE = 'UNSUBSCRIBE_EMAIL_FAILURE'
-export const unsubscribeEmail = (email, subscriptionId) => ({
+export const unsubscribeEmail = (email, token) => ({
   [POST_API]: {
     types: [UNSUBSCRIBE_EMAIL_REQUEST, UNSUBSCRIBE_EMAIL_SUCCESS, UNSUBSCRIBE_EMAIL_FAILURE],
-    endpoint: `${BASE_ENDPOINT}/dev/unsubscribe?email=${email}&subscription_id=${subscriptionId}`,
+    endpoint: `${BASE_ENDPOINT}/dev/unsubscribe?email=${email}&token=${token}`,
     payload: {
         "email": email, 
-        'subscription_id': subscriptionId
+        'token': token
     },
     successTypeActionProps: {
       email,

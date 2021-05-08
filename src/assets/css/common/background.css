@@ -34,3 +34,7 @@
 .background-gradient {
   background: linear-gradient(45deg, rgb(69, 72, 77) 0%, rgb(0, 0, 0) 100%);
 }
+
+.no-background {
+  background: none;
+}
