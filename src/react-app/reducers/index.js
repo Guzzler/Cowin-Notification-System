@@ -136,7 +136,7 @@ const mainReducer = (state = initialState, action) => {
           ...state.base,
           registration: {
             ...state.base.registration,
-            states: action.response.states,
+            states: action.response.data,
           }
         }
       } 
@@ -147,7 +147,7 @@ const mainReducer = (state = initialState, action) => {
       const subscriptions = _.cloneDeep(state.base.registration.subscriptions)
       subscriptions[action.index] = {
         ...subscriptions[action.index],
-        districts: action.response.districts,
+        districts: action.response.data,
         districtLoader: false,
       }
 
