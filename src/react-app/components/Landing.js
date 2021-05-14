@@ -30,7 +30,7 @@ const Landing = () => {
         { 
           isSmall ?
           <div>
-            <div className={'margin-double--top title-style center'}>Vaccine Post</div>
+            <div className={'margin-double--top title-style center'}>VaccinePost</div>
             <div className={'subtitle-style center'}>A Cowin Vaccination Notification System</div>
           </div> :
           null

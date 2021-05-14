@@ -113,7 +113,7 @@ export const landingPageSteps = [
 const validateEmail = (email)  => {
   // From: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+  return re.test(String(email).trim().toLowerCase());
 }
 
 // Return true if phone is in correct format returns false if phone is invalid
@@ -121,7 +121,7 @@ const validatePhone = (phone)  => {
   // From: https://stackoverflow.com/questions/18351553/regular-expression-validation-for-indian-phone-number-and-mobile-number
   // eslint-disable-next-line no-useless-escape
   const re = /^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/;
-  return re.test(String(phone));
+  return re.test(String(phone).trim());
 }
 
 export const SUBSCRIPTION_ERROR_OBJECT = {
