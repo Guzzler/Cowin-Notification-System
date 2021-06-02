@@ -124,11 +124,18 @@ const validatePhone = (phone)  => {
   return re.test(String(phone).trim());
 }
 
+const validatePincode = (pincode) => {
+  const re= /^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$/;
+  return re.test(String(pincode).trim());
+}
+
 export const SUBSCRIPTION_ERROR_OBJECT = {
   stateId: '',
   districtId: '',
   ageGroup: '',
   vaccine: '',
+  pincode: '',
+  pincodeDistance: '',
 }
 
 export const validateRegistrationPayload = (registration) => {
@@ -157,14 +164,33 @@ export const validateRegistrationPayload = (registration) => {
   errors.subscriptions = []
   registration.subscriptions.forEach((subscription, index) => {
     errors.subscriptions.push(_.cloneDeep(SUBSCRIPTION_ERROR_OBJECT))
-    if(!subscription.stateId) {
-      isValid = false
-      errors.subscriptions[index]['stateId'] = 'Please select a state'
-    }
+    if (subscription.type === 'district') {
+      if(!subscription.stateId) {
+        isValid = false
+        errors.subscriptions[index]['stateId'] = 'Please select a state'
+      }
 
-    if(!subscription.districtId) {
+      if(!subscription.districtId) {
+        isValid = false
+        errors.subscriptions[index]['districtId'] = 'Please select a district'
+      }
+    }
+    if (subscription.type === 'pincode') {
+      if (!subscription.pincode) {
+        isValid = false
+        errors.subscriptions[index]['pincode'] = 'Please enter a pincode'
+      }
+      if (!validatePincode(subscription.pincode)) {
+        isValid = false
+        if (!errors.subscriptions[index]['pincode']) {
+          errors.subscriptions[index]['pincode'] = 'Please enter a valid pincode'
+
+        }
+      }
+    }
+    if(!subscription.type) {
       isValid = false
-      errors.subscriptions[index]['districtId'] = 'Please select a district'
+      errors.subscriptions[index]['type'] = 'Please select a valid subscription type'
     }
   })
 

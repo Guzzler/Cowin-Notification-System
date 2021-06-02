@@ -80,14 +80,17 @@ export const registerSubscription = (registration) => ({
     types: [REGISTER_SUBSCRIBE_REQUEST, REGISTER_SUBSCRIBE_SUCCESS, REGISTER_SUBSCRIBE_FAILURE],
     endpoint: `${BASE_ENDPOINT}/dev/subscribe`,
     payload: {
-        "email": registration.email.trim(), 
-        "phoneNumber": registration.phoneNumber.trim(), 
+        "email": registration.email.trim(),
+        "phoneNumber": registration.phoneNumber.trim(),
         "subscriptions": registration.subscriptions.map((subscription) =>{
           return {
             'district_id': subscription.districtId,
             'state_id': subscription.stateId,
             'vaccine': subscription.vaccine,
-            'age_group': subscription.ageGroup
+            'age_group': subscription.ageGroup,
+            'type': subscription.type,
+            'pincode_distance': subscription.pincodeDistance,
+            'pincode': subscription.pincode,
           }
         })
     },
@@ -104,7 +107,7 @@ export const unsubscribeEmail = (email, token) => ({
     types: [UNSUBSCRIBE_EMAIL_REQUEST, UNSUBSCRIBE_EMAIL_SUCCESS, UNSUBSCRIBE_EMAIL_FAILURE],
     endpoint: `${BASE_ENDPOINT}/dev/unsubscribe?email=${email}&token=${token}`,
     payload: {
-        "email": email, 
+        "email": email,
         'token': token
     },
     successTypeActionProps: {

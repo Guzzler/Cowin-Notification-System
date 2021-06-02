@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col, Input, Button } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'; 
+import { PlusOutlined } from '@ant-design/icons';
 import SubscriptionCard from './registration/SubscriptionCard';
 import { SUBSCRIPTION_ERROR_OBJECT } from '../../../common/utils';
 import SuccessfulRegistration from './registration/SuccessfulRegistration';
@@ -23,7 +23,7 @@ const RegistrationForm = (props) => {
     onRemoveSubscription,
     registerSubscription,
     registration,
-    resetRegisterForm
+    resetRegisterForm,
   } = props;
 
   const {
@@ -40,12 +40,12 @@ const RegistrationForm = (props) => {
   return (
     <div>
       <Row className={`${isSmall ? 'bring-to-front margin-one-half--top' : 'bring-to-front margin-large--top'}`}>
-      <Row> 
+      <Row>
         <Col md={22} lg={18} sm={24} className='subheader-style margin---top margin-double--bottom'> <div style={{minWidth: isSmall ? '90vw' : '40vw'}}>Register </div></Col>
       </Row>
       <Row style={{display: 'contents'}}>
 			<Col className={`background-grey border-round padding--sides padding--ends`} md={22} lg={18} sm={24} style={{width: '100%'}}>
-        { 
+        {
           isLoading ?
           <Loader /> :
           hasRegistered ?
@@ -77,27 +77,27 @@ const RegistrationForm = (props) => {
                     fetchDistricts={(stateId) => fetchDistricts(stateId, index)}
                     states={states}
                     errors={errors.subscriptions[index] || SUBSCRIPTION_ERROR_OBJECT}
-                  /> 
+                  />
                 )
               })
             }
-            { 
+            {
               subscriptions.length <= 5 ?
               <Button type="dashed" className='border-round' onClick={() => onAddSubscription()} block icon={<PlusOutlined />}> Add a district </Button> :
               null
             }
-            <Button 
-              className='submit-button margin--top' 
-              onClick={() => registerSubscription()} 
-              block='true' > 
-                Subscribe to Notifications! 
+            <Button
+              className='submit-button margin--top'
+              onClick={() => registerSubscription()}
+              block='true' >
+                Subscribe to Notifications!
             </Button>
           </>
         }
       </Col>
       </Row>
 		</Row>
-    </div>    
+    </div>
   )
 }
 

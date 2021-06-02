@@ -27,7 +27,7 @@ const Landing = () => {
   return (
     <Row className={`${isSmall ? '' : 'margin-double--left'} padding--sides width-100 height-100`}>
       <Col md={10} sm={24} push={isSmall ? 0 : 14}>
-        { 
+        {
           isSmall ?
           <div>
             <div className={'margin-double--top title-style center'}>VaccinePost</div>
@@ -35,7 +35,7 @@ const Landing = () => {
           </div> :
           null
         }
-        <RegistrationForm 
+        <RegistrationForm
           onChangeRegistrationField={(changedField) => dispatch(onChangeRegistrationField(changedField))}
           onChangeSubscriptionField={(changedField, index) => dispatch(onChangeSubscriptionField(changedField, index))}
           onAddSubscription={() => dispatch(onAddSubscription())}
@@ -55,34 +55,32 @@ const Landing = () => {
         />
       </Col>
       <Col md={14} sm={24} pull={isSmall ? 0 : 10}>
-      { 
-
-          !isSmall ?
-          <Layout className={'web-content background-white'}>
-            <div>
-              <div className={'margin-double--top title-style'}>VaccinePost</div>
-              <div className={'margin-double--bottom subtitle-style'}>A Co-WIN Vaccination Notification System</div>
-            </div> 
-          </Layout>
-          :
-          null
+      {
+        !isSmall ?
+        <Layout className={'web-content background-white'}>
+          <div>
+            <div className={'margin-double--top title-style'}>VaccinePost</div>
+            <div className={'margin-double--bottom subtitle-style'}>A Co-WIN Vaccination Notification System</div>
+          </div>
+        </Layout>
+        :
+        null
+      }
+      <Col className={`${isSmall ? "no-background" : "no-background web-steps"}`} md={14} sm={24} >
+        <div className={`subheader-style ${isSmall ? 'margin-double--top' : ''}`}>How it works:</div>
+        <Row className='margin--bottom'>
+        {
+          landingPageSteps.map((step, index) => {
+            return (
+              <RegistrationStep
+                key={index} 
+                {...step}
+              />
+            )
+          })
         }
-  
-          <Col className={`${isSmall ? "no-background" : "no-background web-steps"}`} md={14} sm={24} >
-            <div className={`subheader-style ${isSmall ? 'margin-double--top' : ''}`}>How it works:</div>
-            <Row className='margin--bottom'>
-            {
-              landingPageSteps.map((step, index) => {
-                return (
-                  <RegistrationStep
-                    key={index} 
-                    {...step}
-                  />
-                )
-              })
-            }
-            </Row>
-          </Col>
+        </Row>
+      </Col>
       </Col>
     </Row>
   )
