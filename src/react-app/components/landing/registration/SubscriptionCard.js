@@ -41,10 +41,10 @@ const SubscriptionCard = (props) =>  {
       <>
         <div className='label'> Vaccination Type: </div>
         <Radio.Group className='width-100' value={vaccine} onChange={(e) => props.onChangeSubscriptionField({'vaccine': e.target.value })}>
-          <Radio.Button style={{width: '22%' }} className='f10 margin-half--right center' value="covaxin">Covaxin</Radio.Button>
-          <Radio.Button style={{width: '22%' }} className='f10 margin-half--right center' value="covishield">Covishield</Radio.Button>
-          <Radio.Button style={{width: '22%' }} className='f10 margin-half--right center' value="sputnik">Sputnik</Radio.Button>
-          <Radio.Button style={{width: '22%' }} className='f10 center' value="both">All</Radio.Button>
+          <Radio.Button style={{width: '22.5%' }} className='f10 margin-half--right center' value="covaxin">Covaxin</Radio.Button>
+          <Radio.Button style={{width: '22.5%' }} className='f10 margin-half--right center' value="covishield">Covishield</Radio.Button>
+          <Radio.Button style={{width: '22.5%' }} className='f10 margin-half--right center' value="sputnik">Sputnik</Radio.Button>
+          <Radio.Button style={{width: '22.5%' }} className='f10 center' value="both">All</Radio.Button>
         </Radio.Group>
         <div className='label'> Age Group: </div>
         <Radio.Group className='width-100' value={ageGroup} onChange={(e) => props.onChangeSubscriptionField({'ageGroup': e.target.value })}>
