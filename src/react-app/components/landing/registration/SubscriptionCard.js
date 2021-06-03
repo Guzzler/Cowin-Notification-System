@@ -69,7 +69,7 @@ const SubscriptionCard = (props) =>  {
       <Radio.Group className='width-100' value={vaccine} onChange={(e) => props.onChangeSubscriptionField({'vaccine': e.target.value })}>
           <Radio.Button style={{width: '22.5%' }} className='f10 margin-half--right center' value="covaxin">Covaxin</Radio.Button>
           <Radio.Button style={{width: '22.5%' }} className='f10 margin-half--right center' value="covishield">Covishield</Radio.Button>
-          <Radio.Button style={{width: '22.5%' }} className='f10 margin-half--right center' value="sputnik">Sputnik</Radio.Button>
+          <Radio.Button style={{width: '22.5%' }} className='f10 margin-half--right center' value="sputnik v">Sputnik V</Radio.Button>
           <Radio.Button style={{width: '22.5%' }} className='f10 center' value="both">All</Radio.Button>
         </Radio.Group>
       <div className='label'> Age Group: </div>
