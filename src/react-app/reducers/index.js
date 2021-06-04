@@ -9,7 +9,7 @@ const defaultSubscription = {
   ageGroup: 'both',
   districts: [],
   districtLoader: false,
-  type: '',
+  type: 'pincode',
   pincodeDistance: 5,
   pincode: '',
 }
