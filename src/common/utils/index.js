@@ -125,7 +125,7 @@ const validatePhone = (phone)  => {
 }
 
 const validatePincode = (pincode) => {
-  const re= /^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$/;
+  const re= /^SW\d{6}$/;
   return re.test(String(pincode).trim());
 }
 
