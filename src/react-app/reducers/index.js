@@ -9,6 +9,9 @@ const defaultSubscription = {
   ageGroup: 'both',
   districts: [],
   districtLoader: false,
+  type: 'pincode',
+  pincodeDistance: 5,
+  pincode: '',
 }
 
 const defaultErrorObject = {
