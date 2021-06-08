@@ -91,6 +91,7 @@ export const registerSubscription = (registration) => ({
             'type': subscription.type,
             'pincode_distance': subscription.pincodeDistance,
             'pincode': subscription.pincode,
+            'dose': subscription.dose,
           }
         })
     },
