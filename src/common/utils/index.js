@@ -94,18 +94,18 @@ export const isSmallDevice = () => {
 export const landingPageSteps = [
   {
     number: 1,
-    description: 'Enter your email, phone and the districts you want to get updates for.',
+    description: 'Enter the email id and phone number on which you want to receive updates.',
     iconSrc: infoSvg
   },
   {
     number: 2,
-    description: 'Check your inbox for an email to activate your subscription.',
-    iconSrc:  notifSvg
+    description: 'Enter a PIN Code, and the radius within which you want vaccination centers',
+    iconSrc:  dataSvg
   },
   {
     number: 3,
-    description: 'Receive notifications as soon as vaccine slots are updated!',
-    iconSrc: dataSvg
+    description: 'Verify your email, and receive notifications as soon as vaccine slots are updated!',
+    iconSrc: notifSvg
   }
 ]
 
