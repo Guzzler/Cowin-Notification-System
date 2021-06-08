@@ -29,6 +29,7 @@ const SubscriptionCard = (props) =>  {
       districtLoader,
       pincodeDistance,
       pincode,
+      dose,
     }
   } = props;
   return (
@@ -48,9 +49,14 @@ const SubscriptionCard = (props) =>  {
         </Radio.Group>
         <div className='label'> Age Group: </div>
         <Radio.Group className='width-100' value={ageGroup} onChange={(e) => props.onChangeSubscriptionField({'ageGroup': e.target.value })}>
-          <Radio.Button style={{width: '30.6%' }}  className='f10 margin-half--right center' value="above_18">18-45</Radio.Button>
-          <Radio.Button style={{width: '30.6%' }} className='f10 margin-half--right center' value="above_45">Above-45</Radio.Button>
-          <Radio.Button style={{width: '30.6%' }} className='f10 center' value="both">Both</Radio.Button>
+          <Radio.Button style={{width: '29.8%' }}  className='f10 margin-half--right center' value="above_18">18-45</Radio.Button>
+          <Radio.Button style={{width: '29.8%' }} className='f10 margin-half--right center' value="above_45">Above-45</Radio.Button>
+          <Radio.Button style={{width: '29.8%' }} className='f10 center' value="both">Both</Radio.Button>
+        </Radio.Group>
+        <div className='label'> Dose: </div>
+        <Radio.Group className='width-100' value={dose} onChange={(e) => props.onChangeSubscriptionField({'dose': e.target.value })}>
+          <Radio.Button style={{width: '45.5%' }}  className='f10 margin-half--right center' value="dose_1">Dose-1</Radio.Button>
+          <Radio.Button style={{width: '45.5%' }} className='f10 margin-half--right center' value="dose_2">Dose-2</Radio.Button>
         </Radio.Group>
       </>
       <div className='label'> Select a type of subscription: </div>

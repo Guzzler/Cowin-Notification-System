@@ -12,6 +12,7 @@ const defaultSubscription = {
   type: 'pincode',
   pincodeDistance: 5,
   pincode: '',
+  dose: 'dose_1'
 }
 
 const defaultErrorObject = {
