@@ -7,7 +7,7 @@ const PageFooter = () => {
     <div >Made with <HeartFilled /></div>
     <div>
         By - 
-        <a href='https://github.com/abizerlokhandwala' target="_blank" rel="noopener noreferrer"> Abizer Lokhandwala</a>,
+        <a href='https://www.linkedin.com/in/abizer-lokhandwala/' target="_blank" rel="noopener noreferrer"> Abizer Lokhandwala</a>,
         <a href='https://github.com/shloksingh10' target="_blank" rel="noopener noreferrer"> Shlok Singh</a>,
         <a href='https://arpitmathur.info' target="_blank" rel="noopener noreferrer"> Arpit Mathur</a>,
         <a href='https://github.com/Guzzler' target="_blank" rel="noopener noreferrer"> Sharang Pai</a>,
