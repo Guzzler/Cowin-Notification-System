@@ -3,7 +3,7 @@ import { HeartFilled } from '@ant-design/icons';
 
 const PageFooter = () => {
   return (
-    <div className='f10'>
+    <div className='f12'>
     <div >Made with <HeartFilled /></div>
     <div>
         By - 
