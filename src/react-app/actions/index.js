@@ -114,6 +114,11 @@ export const unsubscribeEmail = (email, token) => ({
     successTypeActionProps: {
       email,
     },
+    onSuccess: async () => {
+      setTimeout(() => {
+        window.location.href= 'https://vaccinepost.co.in';
+      }, 3500)
+    },
     skipCsrfToken: true,
     isPayloadJson: true,
   }

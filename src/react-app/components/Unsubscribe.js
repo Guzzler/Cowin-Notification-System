@@ -33,7 +33,7 @@ const Unsubscribe = () =>  {
           <>
             <CheckCircleOutlined className='f72 text-green' />
             <div className='text-black center margin--top f18'>
-              You have successfully unsubscribed! Your email {email} will no longer receive notifications . 
+              You have successfully unsubscribed! Your email {email} will no longer receive notifications. Redirecting to homepage...
             </div>
           </> :
           <>
