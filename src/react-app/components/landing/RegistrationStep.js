@@ -19,8 +19,8 @@ const RegistrationStep = (props) => {
       sm={24} 
       md={6}
     >
-      <div className={`margin--bottom ${isSmall ? 'f24' : 'f48'} stepnum-style`}>{number}</div>
-      <span className={`center margin-double--bottom ${isSmall ? 'f72' : 'f108'}`} style={{display:'table', margin:'0 auto'}}>
+      <div className={`margin-half-bottom ${isSmall ? 'f24' : 'f48'} stepnum-style`}>{number}</div>
+      <span className={`center margin--bottom ${isSmall ? 'f72' : 'f108'}`} style={{display:'table', margin:'0 auto'}}>
         <img src={iconSrc} alt={`registration-step-icon-${number}`} className="width-100"/>
       </span>
       <div className='para-style margin--ends margin--sides'>{description}</div>
